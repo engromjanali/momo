@@ -26,10 +26,8 @@ Widget proLabel() {
               style: TextStyle(
                 fontFamily: FontMenager.SF_Compact_Rounded,
                 fontWeight: FontWeight.bold,
-                color: white,
+                color: MyColor.white,
                 fontSize: 24,
-                // fontWeight: FontWeight.bold,
-                // fontStyle: FontStyle.normal
               ),
             ),
             
@@ -44,13 +42,13 @@ Widget proLabel() {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.black.withAlpha(200),
-                  gradient: proLinearGradient,
+                  gradient: MyColor.proLinearGradient,
                 ),
                 child: Center(
                   child: Text(
                     "Pro",
                     style: TextStyle(
-                      color: white,
+                      color: MyColor.white,
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
                     ),

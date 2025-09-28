@@ -57,17 +57,7 @@ class _PhotosWithOutPromptState extends State<PhotosWithOutPrompt> {
                 Positioned(
                   child: Container(
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        stops: [0.0, 0.6, 0.8, 1.0],
-                        begin: AlignmentGeometry.topCenter,
-                        end: AlignmentGeometry.bottomCenter,
-                        colors: [
-                          Colors.transparent,
-                          Colors.transparent,
-                          Colors.black,
-                          Colors.black,
-                        ],
-                      ),
+                      gradient: MyColor.blackTransparentGradient,
                     ),
                   ),
                 ),
@@ -84,12 +74,12 @@ class _PhotosWithOutPromptState extends State<PhotosWithOutPrompt> {
                       children: [
                         Text(
                           widget.osItem.title,
-                          style: getTitleStyle().copyWith(fontSize: 26),
+                          style: getSubtitleStyleL().copyWith(fontSize: 26),
                         ),
                         Text(
                           widget.osItem.subTitle,
-                          style: getSubtitleStyle().copyWith(
-                            color: subTitleColor,
+                          style: getSubtitleStyleL().copyWith(
+                            color: MyColor.grey,
                           ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,

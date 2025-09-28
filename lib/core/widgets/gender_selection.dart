@@ -30,11 +30,12 @@ class _GenderSelectionState extends State<GenderSelection> {
         foregroundColor: Colors.white,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Pick Your Gender", style: getTitleStyleExplore()),
+          Text("Pick Your Gender", style: getTitleStyleL()),
           Text(
             "This Information Will improve your selection of model images for the genartion of your photos",
-            style: getTitleStyle().copyWith(color: Colors.grey),
+            style: getSubtitleStyleM(),
           ),
 
           Spacer(),
@@ -72,7 +73,7 @@ class _GenderSelectionState extends State<GenderSelection> {
         padding: EdgeInsets.all(20),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: cardColor,
+          color: MyColor.cardColor,
           border: BoxBorder.all(
             color: isSelected? Colors.grey :Colors.grey.withAlpha(100),
           ),

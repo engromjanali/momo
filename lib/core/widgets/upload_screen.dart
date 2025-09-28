@@ -39,6 +39,11 @@ class _UploadScreenState extends State<UploadScreen> {
     Images.myPhoto,
     Images.myPhoto,
     Images.myPhoto,
+    Images.myPhoto,
+    Images.myPhoto,
+    Images.myPhoto,
+    Images.myPhoto,
+    Images.myPhoto,
   ];
   List<String> goodPhotosList = [
     Images.myPhoto,
@@ -121,11 +126,11 @@ class _UploadScreenState extends State<UploadScreen> {
         controller: _scrollController,
         child: Column(
           children: [
-            Text("Pick 8-12 Photos of yourself", style: getTitleStyleExplore()),
+            Text("Pick 8-12 Photos of yourself", style: getTitleStyleXL()),
 
             // goold photos
             Container(
-              color: cardColor,
+              color: MyColor.cardColor,
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
               child: Column(
                 children: [
@@ -133,12 +138,12 @@ class _UploadScreenState extends State<UploadScreen> {
                     spacing: 10,
                     children: [
                       Icon(Icons.check_circle, size: 16, color: Colors.green),
-                      Text("Good Photos", style: getTitleStyle()),
+                      Text("Good Photos", style: getTitleStyleS()),
                     ],
                   ),
                   Text(
                     "We need to colse-up selfies of the same person, taken from a varieaty of angle and with different facial expressions and background ",
-                    style: getSubtitleStyle(),
+                    style: getSubtitleStyleS(),
                   ),
                   SizedBox(
                     height: 120,
@@ -171,12 +176,12 @@ class _UploadScreenState extends State<UploadScreen> {
                     spacing: 10,
                     children: [
                       Icon(Icons.cancel, size: 16, color: Colors.red),
-                      Text("Bad Photos", style: getTitleStyle()),
+                      Text("Bad Photos", style: getTitleStyleS()),
                     ],
                   ),
                   Text(
                     "We need to colse-up selfies of the same person, taken from a varieaty of angle and with different facial expressions and background ",
-                    style: getSubtitleStyle(),
+                    style: getSubtitleStyleS(),
                   ),
                   SizedBox(
                     height: 120,
@@ -202,12 +207,12 @@ class _UploadScreenState extends State<UploadScreen> {
             // your photos
             if (imageList.isNotEmpty)
               Container(
-                color: cardColor,
+                color: MyColor.cardColor,
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("your Photos", style: getTitleStyle()),
+                    Text("your Photos", style: getTitleStyleS()),
 
                     Row(
                       children: [

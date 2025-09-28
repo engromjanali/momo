@@ -1,10 +1,13 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:momo/core/controller/c_home.dart';
 import 'package:momo/core/util/constants/text_style.dart';
+import 'package:momo/core/widgets/glass_widget.dart';
 import 'package:momo/prsentation/screens/explore/explore_screen.dart';
-import 'package:momo/prsentation/screens/one_shot/one_shot.dart';
 import 'package:momo/prsentation/screens/my_profile/my_profile.dart';
+import 'package:momo/prsentation/screens/one_shot/one_shot.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,21 +31,16 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       extendBody: true,
+      
       backgroundColor: Colors.black,
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: Colors.black.withAlpha(230),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-        ),
+      bottomNavigationBar: glassWidget(
+        border: Border(top: BorderSide(color:Colors.white.withAlpha(100)) ),
         child: BottomNavigationBar(
           currentIndex: cHome.getCurrentPageNo,
           // type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.transparent, // <-- set black color
           selectedItemColor: Colors.white, // selected icon/text color
-          unselectedItemColor: Colors.white70,
+          unselectedItemColor: Colors.white24,
           elevation: 0,
           onTap: (val) {
             cHome.setCurrentPage(val);

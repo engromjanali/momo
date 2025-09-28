@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:momo/core/util/constants/colors.dart';
 import 'package:momo/core/util/constants/text_style.dart';
 import 'package:momo/core/widgets/bottom_button.dart';
+import 'package:momo/core/widgets/s_save.dart';
 import 'package:momo/prsentation/screens/purchese_screen.dart';
 
 class ModelNameScreen extends StatefulWidget {
@@ -21,7 +22,7 @@ class _ModelNameScreenState extends State<ModelNameScreen> {
           ? getBottomRoundedButton(
               label: "Continue",
               ontap: () {
-                Get.to(()=>PurcheseScreen());
+                Get.to(()=>SSave());
               },
               margin: EdgeInsets.only(left: 10, right: 10,bottom: 20),
             )
@@ -41,17 +42,17 @@ class _ModelNameScreenState extends State<ModelNameScreen> {
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Text(
                 "Name Your AI Model",
-                style: getTitleStyle().copyWith(fontSize: 26),
+                style: getTitleStyleL(),
               ),
             ),
             Text(
               "This information will improve your selection of medl images for the generation of your photos.",
-              style: getSubtitleStyle().copyWith(fontSize: 18),
+              style: getSubtitleStyleM(),
             ),
             Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: cardColor,
+                color: MyColor.cardColor,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextField(
@@ -59,7 +60,8 @@ class _ModelNameScreenState extends State<ModelNameScreen> {
                 autocorrect: false,
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  hint: Text("Type Your Model Name", style: getSubtitleStyle()),
+                  label: Text("Model Name", style: getSubtitleStyleL(),),
+                  hint: Text("Type Your Model Name", style: getSubtitleStyleL()),
                   suffixIcon: nameController.text.isNotEmpty
                       ? IconButton(
                           onPressed: () {
@@ -70,7 +72,7 @@ class _ModelNameScreenState extends State<ModelNameScreen> {
                         )
                       : null,
                 ),
-                style: getTextFieldStyle(),
+                style: getTitleStyleS(),
                 onChanged: (value) {
                   setState(() {});
                 },

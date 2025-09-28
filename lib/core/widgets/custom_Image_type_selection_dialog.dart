@@ -37,7 +37,7 @@ Future<SelectImageFrom> customImageSourceSelectionDialog() async {
                 ),
                 Text(
                   "Take photo from",
-                  style: getTitleStyle().copyWith(fontSize: 24),
+                  style: getTitleStyleS(),
                 ),
                 SizedBox(
                   height: 40,

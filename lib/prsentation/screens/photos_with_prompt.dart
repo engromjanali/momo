@@ -58,17 +58,7 @@ class _PhotosWithPromptState extends State<PhotosWithPrompt> {
                 Positioned(
                   child: Container(
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        stops: [0.0, 0.6, 0.8, 1.0],
-                        begin: AlignmentGeometry.topCenter,
-                        end: AlignmentGeometry.bottomCenter,
-                        colors: [
-                          Colors.transparent,
-                          Colors.transparent,
-                          Colors.black,
-                          Colors.black,
-                        ],
-                      ),
+                      gradient: MyColor.blackTransparentGradient,
                     ),
                   ),
                 ),
@@ -85,12 +75,12 @@ class _PhotosWithPromptState extends State<PhotosWithPrompt> {
                       children: [
                         Text(
                           widget.osItem.title,
-                          style: getTitleStyle().copyWith(fontSize: 26),
+                          style: getTitleStyleL().copyWith(fontSize: 26),
                         ),
                         Text(
                           widget.osItem.subTitle,
-                          style: getSubtitleStyle().copyWith(
-                            color: subTitleColor,
+                          style: getSubtitleStyleL().copyWith(
+                            color: MyColor.grey,
                           ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -138,23 +128,23 @@ class _PhotosWithPromptState extends State<PhotosWithPrompt> {
                         bottom: 10,
                       ),
                       decoration: BoxDecoration(
-                        color: cardColor,
+                        color: MyColor.cardColor,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Enter Prompt", style: getTitleStyle()),
+                          Text("Enter Prompt", style: getTitleStyleS()),
                           Expanded(
                             child: TextField(
                               controller: promptController,
                               decoration: InputDecoration(
                                 hintText: "Write Your Prompt Here...",
-                                hintStyle: getSubtitleStyle(),
+                                hintStyle: getSubtitleStyleL(),
 
                                 border: InputBorder.none,
                               ),
-                              style: getSubtitleStyle(),
+                              style: getSubtitleStyleL(),
                               expands: true,
                               scrollPhysics: ClampingScrollPhysics(),
                               maxLines: null,

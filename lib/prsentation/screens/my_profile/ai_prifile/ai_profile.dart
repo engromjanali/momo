@@ -1,10 +1,13 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:momo/core/util/constants/text_style.dart';
 
 Widget getAiProfile({required Function() onTap}) {
   return Expanded(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Spacer(),
         Stack(
           children: [
             Container(
@@ -36,16 +39,13 @@ Widget getAiProfile({required Function() onTap}) {
 
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-          child: Text(
+          child: AutoSizeText(
             "Upload your photos to start using the app",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 30,
-              fontWeight: FontWeight.w600,
-            ),
+            style: getTitleStyleL(),
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
+            
           ),
         ),
 
@@ -53,24 +53,37 @@ Widget getAiProfile({required Function() onTap}) {
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
           child: Text(
             "You need to take this step only once",
-            style: TextStyle(
-              color: Colors.white70,
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-            ),
+            style: getSubtitleStyleL(),
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
         ),
 
-        ElevatedButton.icon(
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
-          onPressed: onTap,
-          icon: Icon(Icons.add_circle, color: Colors.black),
-          label: Text("Add Photos"),
+GestureDetector(
+          onTap: onTap,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            child: Row(
+              spacing: 10,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Add Photos",
+                  style: getTitleStyleS().copyWith(color: Colors.black),
+                ),
+                Icon(Icons.add_circle, color: Colors.black),
+              ],
+            ),
+          ),
         ),
-        SizedBox(height: 20),
+        Spacer(),
+        SizedBox(height: 100,),
+       
       ],
     ),
   );

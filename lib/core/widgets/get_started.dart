@@ -31,7 +31,16 @@ class _GetStartedState extends State<GetStarted> {
     return SafeArea(
 
         child: Scaffold(
+extendBody: true,
       backgroundColor: Colors.black,
+
+      bottomNavigationBar: getBottomRoundedButton(
+                    label: "Get Stared",
+                    margin: EdgeInsets.only(bottom: 0, top: 10),
+                    ontap: () {
+                      Get.to(()=>UploadScreen());
+                    },
+                  ),
       body: Column(
         children: [
           // top area
@@ -72,86 +81,72 @@ class _GetStartedState extends State<GetStarted> {
               padding: EdgeInsets.all(10),
               color: Colors.black,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "How it Work?",
-                    style: getTitleStyle().copyWith(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w800,
-                    ),
+                    style: getTitleStyleM(),
                   ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(5),
-                      padding: EdgeInsets.only(
-                        left: 10,
-                        right: 10,
-                        top: 20,
-                        bottom: 10,
-                      ),
-                      decoration: BoxDecoration(
-                        color: cardColor,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              spacing: 10,
-                              children: [
-                                Icon(
-                                  Icons.stars_rounded,
-                                  color: Colors.white,
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    "Ai Analizesyour apperance to create personalized photo and video content",
-                                    style: getTitleStyle().copyWith(
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ),
-                              ],
+
+                  Container(
+                    margin: EdgeInsets.all(5),
+                    padding: EdgeInsets.only(
+                      left: 10,
+                      right: 10,
+                      top: 20,
+                      bottom: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: MyColor.cardColor,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      spacing: 10,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: 10,
+                          children: [
+                            Icon(
+                              Icons.stars_rounded,
+                              color: Colors.white,
                             ),
-                          ),
-                          Divider(color: Colors.grey),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              spacing: 10,
-                              children: [
-                                Icon(
-                                  Icons.photo_library_sharp,
-                                  color: Colors.white,
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    "Upload your photo to build your ai profile and start genarating unique creation.",
-                                    style: getTitleStyle().copyWith(
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            Expanded(
+                              child: Text(
+                                "Ai Analizesyour apperance to create personalized photo and video content",
+                                style: getSubtitleStyleM(),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                        Divider(color: Colors.grey),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: 10,
+                          children: [
+                            Icon(
+                              Icons.photo_library_sharp,
+                              color: Colors.white,
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Upload your photo to build your ai profile and start genarating unique creation.",
+                                style: getSubtitleStyleM(),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
               
-                  getBottomRoundedButton(
-                    label: "Get Stared",
-                    margin: EdgeInsets.only(bottom: 0, top: 10),
-                    ontap: () {
-                      Get.to(()=>UploadScreen());
-                    },
-                  ),
+                  SizedBox(
+                    height: 50,
+                  )
                 ],
               ),
             ),

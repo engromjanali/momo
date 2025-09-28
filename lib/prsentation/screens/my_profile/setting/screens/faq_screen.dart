@@ -66,7 +66,7 @@ class _FaqScreenState extends State<FaqScreen> {
                             child: ListTile(
                               title: Text(
                                 questionList[index][Constants.question],
-                                style: getSubtitleStyle().copyWith(
+                                style: getSubtitleStyleL().copyWith(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -91,7 +91,7 @@ class _FaqScreenState extends State<FaqScreen> {
                                     padding: const EdgeInsets.all(12.0),
                                     child: Text(
                                       questionList[index][Constants.ans],
-                                      style: getSubtitleStyle().copyWith(
+                                      style: getSubtitleStyleL().copyWith(
                                         color: Colors.white70,
                                       ),
                                     ),

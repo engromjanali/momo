@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:momo/core/asset_manager/assets/images.dart';
+import 'package:momo/core/util/constants/colors.dart';
+import 'package:momo/core/util/constants/text_style.dart';
 import 'package:momo/core/widgets/get_this_pack.dart';
 import 'package:momo/data/model/one_shot/oneshot_item_model.dart';
 import 'package:momo/core/util/services/navigator_services.dart';
@@ -33,15 +35,7 @@ Widget getOneShotItem({required OSItemModel osItem}){
                       width: 150,
                       
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: AlignmentGeometry.topCenter,
-                          end: AlignmentGeometry.bottomCenter,
-                          colors: [
-                            Colors.transparent,
-                            Colors.transparent,
-                            Colors.black,
-                          ],
-                        ),
+                        gradient: MyColor.blackTransparentGradient,
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
@@ -55,7 +49,7 @@ Widget getOneShotItem({required OSItemModel osItem}){
                   right: 0,
                   child: Column(
                     children: [
-                      Text(osItem.title,textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),),
+                      Text(osItem.title,textAlign: TextAlign.center, style: getTitleStyleS()),
     
                     ],
                   )),

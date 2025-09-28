@@ -1,0 +1,8 @@
+1. Go to a new page
+Get.to(NewPage());
+2. Go back
+Get.back();
+3. Replace current page with a new one
+Get.off(NewPage());
+4. Clear all previous pages & open a new one
+Get.offAll(HomePage());

@@ -87,7 +87,7 @@ class TermsOfUser extends StatelessWidget {
               Expanded(
                 child: Text(
                   "MOMO",
-                  style: getTitleStyle().copyWith(
+                  style: getTitleStyleL().copyWith(
                     fontWeight: FontWeight.w800,
                     fontSize: 26,
                   ),
@@ -129,10 +129,10 @@ Widget getTerms({required String title, required String details}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text(title, style: getTitleStyle().copyWith(fontSize: 26)),
+      Text(title, style: getTitleStyleL().copyWith(fontSize: 26)),
       Text(
         details,
-        style: getSubtitleStyle().copyWith(
+        style: getSubtitleStyleL().copyWith(
           fontSize: 16,
           fontWeight: FontWeight.normal,
         ),

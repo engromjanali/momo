@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:momo/core/asset_manager/assets/images.dart';
+import 'package:momo/core/util/constants/colors.dart';
 import 'package:momo/core/widgets/get_this_pack.dart';
 
 Widget getImageCard({
@@ -24,16 +25,7 @@ Widget getImageCard({
             ),
             Container(
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomCenter, // start at bottom
-                    end: Alignment.topCenter,  
-                    // transform: GradientRotation(4),
-                    colors: [
-                      Colors.black,    // bottom color
-                      Colors.transparent, // top color
-                      Colors.transparent, // top color
-                    ],
-                  ),
+                  gradient: MyColor.blackTransparentGradient,
                 ),
             ),  
             Positioned(

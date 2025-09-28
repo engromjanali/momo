@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:momo/core/asset_manager/assets/images.dart';
+import 'package:momo/core/util/constants/text_style.dart';
 import 'package:momo/core/widgets/see_all_page.dart';
 import 'package:momo/data/model/explore/explore_item_model.dart';
 import 'package:momo/data/model/explore/explore_model.dart';
@@ -21,12 +22,12 @@ Widget getOneShotList(BuildContext context, {required OneshotModel oneShot,}){
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(oneShot.title, style:  TextStyle(fontSize: 22, fontWeight: FontWeight.w600, color: Colors.white),),
+                Text(oneShot.title, style:  getTitleStyleM(),),
                 GestureDetector(
                   onTap: (){
                     Get.to(()=>SeeAllPage(oneShot: oneShot, isExplore: false,));
                   },
-                  child: Text("See All", style:  TextStyle(fontSize: 20, color: Colors.grey),)),
+                  child: Text("See All", style:  getSubtitleStyleL(),)),
               ],
             ),
           ),

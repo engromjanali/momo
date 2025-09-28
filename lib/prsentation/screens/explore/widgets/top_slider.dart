@@ -4,6 +4,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:momo/core/asset_manager/assets/images.dart';
+import 'package:momo/core/util/constants/text_style.dart';
+import 'package:momo/core/widgets/glass_widget.dart';
 import 'package:momo/data/model/explore/explore_model.dart';
 import 'package:momo/data/model/one_shot/oneshot_item_model.dart';
 import 'package:momo/data/model/one_shot/oneshot_model.dart';
@@ -156,21 +158,29 @@ class _TopSliderState extends State<TopSlider> {
                                       ),
 
                                       // Elevated button
-                                      ElevatedButton.icon(
-                                        onPressed: () {
-                                          widget.onTap(widget.exploreList![_currentItem]);
-                                        },
-                                        icon: Text(
-                                          "Try ${widget.exploreList![_currentItem].title}",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        label: Icon(
-                                          Icons.keyboard_arrow_right_outlined,
-                                          color: Colors.black,
-                                        ),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.white
-                                              .withAlpha(150),
+                                      glassWidget(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            widget.onTap(widget.exploreList![_currentItem]);
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                              "Try ${widget.exploreList![_currentItem].title}",
+                                              style: getTitleStyleS(),
+                                            ),
+                                            
+                                            Icon(
+                                              Icons.keyboard_arrow_right_outlined,
+                                              color: Colors.white,
+                                            ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                       ),
                                       SizedBox(height: 40),
@@ -214,12 +224,7 @@ class _TopSliderState extends State<TopSlider> {
                                                   Text(
                                                     widget.oneShotItemList![_currentItem].subTitle,
                                                     textAlign: TextAlign.start,
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 16,
-                                                      color: Colors.white70,
-                                                    ),
+                                                    style: getSubtitleStyleL(),
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     maxLines: 2,
@@ -227,21 +232,24 @@ class _TopSliderState extends State<TopSlider> {
                                                 ],
                                               ),
                                             ),
-                                            ElevatedButton.icon(
-                                              onPressed: (){
-                                                widget.onTap(widget.oneShotItemList![_currentItem]);
-                                              },
-                                              iconAlignment: IconAlignment.end,
-                                              label: Text(
-                                                "Try It",
-                                                style: TextStyle(
-                                                  color: Colors.black,
+                                            glassWidget(
+                                              padding: EdgeInsets.all(8),
+                                              borderRadius: BorderRadius.circular(20),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  widget.onTap(widget.oneShotItemList![_currentItem]);
+                                                },
+                                                  
+                                                child: Row(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+                                                   Text(
+                                                    "Try It",
+                                                    style: getTitleStyleS()
+                                                  ),
+                                                  Icon(Icons.keyboard_arrow_right_sharp, color: Colors.white,)
+                                                  ],
                                                 ),
-                                              ),
-                                              style: ElevatedButton.styleFrom(
-                                                padding: EdgeInsets.all(0),
-                                                backgroundColor: Colors.white
-                                                    .withAlpha(150),
                                               ),
                                             ),
                                           ],

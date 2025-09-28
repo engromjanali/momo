@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:momo/core/asset_manager/assets/images.dart';
 import 'package:momo/core/util/constants/all_enums.dart';
+import 'package:momo/core/util/constants/colors.dart';
+import 'package:momo/core/util/constants/text_style.dart';
 import 'package:momo/core/widgets/bottom_button.dart';
 import 'package:momo/core/widgets/custom_Image_type_selection_dialog.dart';
 import 'package:momo/core/widgets/get_started.dart';
@@ -77,11 +79,7 @@ class _GetThisPackState extends State<GetThisPack> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: AlignmentGeometry.bottomCenter,
-                              end: AlignmentGeometry.topCenter,
-                              colors: [Colors.black, Colors.transparent],
-                            ),
+                            gradient: MyColor.blackTransparentGradient,
                           ),
                         ),
                         Positioned(
@@ -94,18 +92,11 @@ class _GetThisPackState extends State<GetThisPack> {
                                 widget.isExplore
                                     ? widget.eItem!.title
                                     : widget.oneShotItem!.title,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 28,
-                                  fontWeight: FontWeight.w800,
-                                ),
+                                style: getTitleStyleXL()
                               ),
                               Text(
                                 "${widget.isExplore ? widget.eItem!.example.length : widget.oneShotItem!.example.length} Photos",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                ),
+                                style: getTitleStyleS(),
                               ),
                               SizedBox(height: 20),
                             ],
@@ -176,11 +167,7 @@ class _GetThisPackState extends State<GetThisPack> {
                               children: [
                                 Text(
                                   'What\'s Inside',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: getTitleStyleS(),
                                 ),
                                 Spacer(),
                                 Container(
@@ -200,9 +187,7 @@ class _GetThisPackState extends State<GetThisPack> {
                                   
                                   child: Text(
                                     "SNEAK PEEK",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                    ),
+                                    style: getSubtitleStyleM().copyWith(color: Colors.black),
                                     
                                   ),
                                 ),
@@ -210,20 +195,13 @@ class _GetThisPackState extends State<GetThisPack> {
                             ),
                             SizedBox(height: 8),
                             Text(
-                              // widget.isExplore
-                              //     ? 
                                   widget.eItem!.details,
-                                  // : widget.oneShotItem!.details,
-                              style: TextStyle(color: Colors.white70),
+                              style: getSubtitleStyleM(),
                             ),
                             SizedBox(height: 8),
                             Text(
                               'Styles & Avatars',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: getTitleStyleS(),
                             ),
 
                             ListView.builder(
@@ -243,12 +221,8 @@ class _GetThisPackState extends State<GetThisPack> {
                                     Icon(Icons.circle, color: Colors.grey, size: 10,),
                                     Expanded(
                                       child: Text(
-                                        // widget.isExplore?
-                                            widget.eItem!.spacificaton[index],
-                                            // : widget
-                                            //       .oneShotItem!
-                                            //       .spacificaton[index],
-                                        style: TextStyle(color: Colors.white70),
+                                        widget.eItem!.spacificaton[index],
+                                        style: getSubtitleStyleM(),
                                       ),
                                     ),
                                   ],
@@ -258,11 +232,7 @@ class _GetThisPackState extends State<GetThisPack> {
 
                             Text(
                               'Example Outputs',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: getTitleStyleS()
                             ),
                           ],
                         ),
@@ -292,17 +262,7 @@ class _GetThisPackState extends State<GetThisPack> {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin:
-                                      Alignment.bottomCenter, // start at bottom
-                                  end: Alignment.topCenter,
-                                  // transform: GradientRotation(4),
-                                  colors: [
-                                    Colors.black, // bottom color
-                                    Colors.transparent, // top color
-                                    Colors.transparent, // top color
-                                  ],
-                                ),
+                                gradient: MyColor.blackTransparentGradient,
                               ),
                             ),
                           ],

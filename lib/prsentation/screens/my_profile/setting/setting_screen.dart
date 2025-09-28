@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:momo/core/util/constants/text_style.dart';
 import 'package:momo/core/util/constants/url.dart';
 import 'package:momo/core/asset_manager/mothod/launch_url.dart';
 import 'package:momo/prsentation/screens/my_profile/setting/screens/faq_screen.dart';
@@ -26,7 +27,6 @@ class _SettingScreenState extends State<SettingScreen> {
         backgroundColor: Colors.black,
         title: Text(
           "Settings",
-          style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
         ),
       ),
 
@@ -155,7 +155,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
                     label, // the text
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style:getTitleStyleS(),
                   ),
                 ),
               ),

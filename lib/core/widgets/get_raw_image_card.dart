@@ -12,7 +12,7 @@ Widget getImageCard({
     return Container(
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
-        color: cardColor,
+        color: MyColor.cardColor,
         borderRadius: BorderRadius.circular(10),
 
         // image: DecorationImage(image: ,fit: BoxFit.fill,))
@@ -61,11 +61,11 @@ Widget getImageCard({
                       Icon(
                         Icons.image_search_sharp,
                         size: 40,
-                        color: subTitleColor,
+                        color: MyColor.grey,
                       ),
                       Text(
                         label,
-                        style: getSubtitleStyle(),
+                        style: getSubtitleStyleL(),
                         textAlign: TextAlign.center,
                       ),
                     ],

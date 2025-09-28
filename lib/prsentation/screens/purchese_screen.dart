@@ -19,7 +19,7 @@ class _PurcheseScreenState extends State<PurcheseScreen> {
       extendBody: true,
       backgroundColor: Colors.black,
       bottomNavigationBar: getBottomRoundedButton(
-        label: "Continue",
+        label: "Purchase Now",
         margin:EdgeInsets.only(bottom: 60, left: 20, right: 20),
         ontap: () {
           

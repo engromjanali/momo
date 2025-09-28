@@ -102,6 +102,397 @@ class CExplore extends ChangeNotifier {
               "professional_4.png",
             ],
           },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
+          {
+            Constants.title: "suit",
+            Constants.details:
+                "Business-oriented attire and demeanor for corporate settings",
+            Constants.spacificaton: [
+              "Corporate Headshots",
+              "Resume Styling",
+              "Networking Events",
+              "Professional Branding",
+            ],
+            Constants.example: [
+              "professional_1.png",
+              "professional_2.png",
+              "professional_3.png",
+              "professional_4.png",
+            ],
+          },
         ],
       ),
       ExploreModel(
