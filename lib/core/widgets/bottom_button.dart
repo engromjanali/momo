@@ -18,7 +18,7 @@ Widget getBottomRoundedButton({
             borderRadius: BorderRadius.circular(10),
             color: Colors.white,
           ),
-          alignment: AlignmentGeometry.center,
+          alignment: Alignment.center,
           child: Text(
             "$label",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

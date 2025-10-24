@@ -247,7 +247,7 @@ class _PurcheseScreenState extends State<PurcheseScreen> {
 
           SizedBox(height: 100),
           Align(
-            alignment: AlignmentGeometry.center,
+            alignment: Alignment.center,
             child: Text(
               "Auto-renews at Bdt 1400/week. No Commitment.\nCancel anytime.",
               style: TextStyle(color: Colors.white70),

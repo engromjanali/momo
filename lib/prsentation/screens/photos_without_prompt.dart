@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -5,7 +7,7 @@ import 'package:momo/core/asset_manager/assets/images.dart';
 import 'package:momo/core/util/constants/all_enums.dart';
 import 'package:momo/core/util/constants/colors.dart';
 import 'package:momo/core/util/constants/text_style.dart';
-import 'package:momo/core/util/services/image_picker.dart';
+import 'package:momo/core/util/services/sv_image_picker.dart';
 import 'package:momo/core/widgets/bottom_button.dart';
 import 'package:momo/core/widgets/custom_Image_type_selection_dialog.dart';
 import 'package:momo/core/widgets/get_raw_image_card.dart';
@@ -23,7 +25,7 @@ class PhotosWithOutPrompt extends StatefulWidget {
 
 
 class _PhotosWithOutPromptState extends State<PhotosWithOutPrompt> {
-  List<String?> pickedImageList = [];
+  List<File?> pickedImageList = [];
 
   @override
   void initState() {
@@ -132,7 +134,7 @@ class _PhotosWithOutPromptState extends State<PhotosWithOutPrompt> {
                               await customImageSourceSelectionDialog();
                           if (res != SelectImageFrom.unSelected) {
                             XFile? pickedImageFile =
-                                await ImagePickerServices()
+                                await SvImagePicker()
                                     .pickSingleImage(
                                       choseFrom:
                                           SelectImageFrom.camera ==
@@ -143,12 +145,12 @@ class _PhotosWithOutPromptState extends State<PhotosWithOutPrompt> {
                             if (pickedImageFile != null) {
                               setState(() {
                                 pickedImageList[index] =
-                                    pickedImageFile.path;
+                                    File(pickedImageFile.path);
                               });
                             }
                           }
                         }
-                      }, imagePath: pickedImageList[index],
+                      }, image: pickedImageList[index],
                     ),
                   );
                 }),

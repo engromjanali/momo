@@ -7,7 +7,7 @@ import 'package:momo/core/widgets/get_this_pack.dart';
 import 'package:momo/core/widgets/image_card.dart';
 import 'package:momo/data/model/one_shot/oneshot_item_model.dart';
 import 'package:momo/data/model/one_shot/oneshot_model.dart';
-import 'package:momo/core/util/services/navigator_services.dart';
+import 'package:momo/core/util/services/sv_navigator_services.dart';
 
 class SeeAllPage extends StatefulWidget {
   final ExploreModel? explore;
@@ -68,7 +68,7 @@ class _SeeAllPageState extends State<SeeAllPage> {
                     }
                     else{
                       print("oneshot");
-                      NServices().onseShotToApply(osItem: OSItemModel.fromMap(widget.oneShot!.items[index]));
+                      SvNavigator().onseShotToApply(osItem: OSItemModel.fromMap(widget.oneShot!.items[index]));
                     }
                   },
                   label: widget.isExplore

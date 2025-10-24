@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:momo/core/asset_manager/assets/images.dart';
 import 'package:momo/core/util/constants/all_enums.dart';
 import 'package:momo/data/model/one_shot/oneshot_item_model.dart';
-import 'package:momo/core/util/services/navigator_services.dart';
+import 'package:momo/core/util/services/sv_navigator_services.dart';
 import 'package:momo/prsentation/screens/explore/widgets/current_item_indicator.dart';
 import 'package:momo/prsentation/screens/explore/widgets/top_slider.dart';
 import 'package:momo/core/widgets/model_name_screen.dart';
@@ -67,7 +67,7 @@ class _OneShotState extends State<OneShot> {
                       .toList() : [],
                   isExplore: false,
                   onTap: (osItem) {
-                    NServices().onseShotToApply(osItem: osItem);
+                    SvNavigator().onseShotToApply(osItem: osItem);
                   },
                 ),
 

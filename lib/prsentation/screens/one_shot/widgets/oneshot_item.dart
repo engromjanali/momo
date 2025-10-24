@@ -1,18 +1,16 @@
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:momo/core/asset_manager/assets/images.dart';
 import 'package:momo/core/util/constants/colors.dart';
 import 'package:momo/core/util/constants/text_style.dart';
-import 'package:momo/core/widgets/get_this_pack.dart';
 import 'package:momo/data/model/one_shot/oneshot_item_model.dart';
-import 'package:momo/core/util/services/navigator_services.dart';
+import 'package:momo/core/util/services/sv_navigator_services.dart';
 
 Widget getOneShotItem({required OSItemModel osItem}){
   return GestureDetector(
     onTap: () {
       // navigate to apply now page 
-      NServices().onseShotToApply(osItem: osItem);
+      SvNavigator().onseShotToApply(osItem: osItem);
     
     },
     child: Stack(

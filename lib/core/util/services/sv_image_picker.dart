@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ImagePickerServices {
+class SvImagePicker {
   ImagePicker _picker = ImagePicker();
 
-  ImagePickerServices() {}
-
   Future<XFile?> pickSingleImage({ImageSource choseFrom = ImageSource.gallery}) async {
+    // remember picked image is a file so we can't treat it as asset, 
+    // treat as file,
+    // Image.file(File(_pickedFile!.path))
+    
     XFile? pickedFile;
     try {
       pickedFile = await _picker.pickImage(source: choseFrom);

@@ -71,8 +71,8 @@ import 'package:momo/core/widgets/CustomElevatedButton.dart';
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          begin: AlignmentGeometry.topCenter,
-                          end: AlignmentGeometry.bottomCenter,
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
                           colors: [Colors.transparent, Colors.white,Colors.white],
                         ),
                       ),

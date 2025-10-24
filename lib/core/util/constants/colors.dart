@@ -8,8 +8,8 @@ class MyColor{
   static const Color  white = Color(0xFFFFFFFF);
 
   static var proLinearGradient = LinearGradient(
-    begin: AlignmentGeometry.topRight,
-    end: AlignmentGeometry.bottomLeft,
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
     colors: [
       Color(0xFF01FD8C),
       Color(0xFF2FDFFF),
@@ -17,8 +17,8 @@ class MyColor{
   );
 
   static var blackTransparentGradient = LinearGradient(
-    begin: AlignmentGeometry.topCenter,
-    end: AlignmentGeometry.bottomCenter,
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
     stops: [0.7, 1.0],
     colors: [
       Colors.transparent,

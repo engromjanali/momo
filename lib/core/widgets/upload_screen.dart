@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -5,7 +7,7 @@ import 'package:momo/core/asset_manager/assets/images.dart';
 import 'package:momo/core/util/constants/all_enums.dart';
 import 'package:momo/core/util/constants/colors.dart';
 import 'package:momo/core/util/constants/text_style.dart';
-import 'package:momo/core/util/services/image_picker.dart';
+import 'package:momo/core/util/services/sv_image_picker.dart';
 import 'package:momo/core/widgets/bottom_button.dart';
 import 'package:momo/core/widgets/custom_Image_type_selection_dialog.dart';
 import 'package:momo/core/widgets/gender_selection.dart';
@@ -33,18 +35,7 @@ class _UploadScreenState extends State<UploadScreen> {
   final ScrollController _scrollController = ScrollController();
   double _opacity = 0.0;
   double _imageScale = 1.0; // Scale for bounce effect
-  List<String> imageList = [
-    Images.myPhoto,
-    Images.myPhoto,
-    Images.myPhoto,
-    Images.myPhoto,
-    Images.myPhoto,
-    Images.myPhoto,
-    Images.myPhoto,
-    Images.myPhoto,
-    Images.myPhoto,
-    Images.myPhoto,
-  ];
+  List<File> imageList = [];
   List<String> goodPhotosList = [
     Images.myPhoto,
     Images.myPhoto,
@@ -243,7 +234,7 @@ class _UploadScreenState extends State<UploadScreen> {
                                       await _chooseImage();
                                     }
                                   },
-                                  imagePath: imageList[index],
+                                  image: imageList[index],
                                   label: "Addd Image",
                                 ),
                               );
@@ -303,13 +294,15 @@ class _UploadScreenState extends State<UploadScreen> {
 
   Future<void> _chooseImage() async {
     if (imageList.length < 8) {
-      List<XFile>? pickedImageList = await ImagePickerServices()
+      List<XFile>? pickedImageList = await SvImagePicker()
           .pickMultipleImage();
+
       if (pickedImageList != null) {
+        // remember it's file not asset.
         setState(() {
           imageList.insertAll(
             0,
-            pickedImageList.map((image) => image.path).toList(),
+            pickedImageList.map((image) => File(image.path)).toList(),
           );
         });
       }

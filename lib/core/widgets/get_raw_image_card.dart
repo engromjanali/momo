@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:momo/core/asset_manager/assets/images.dart';
 import 'package:momo/core/util/constants/colors.dart';
@@ -5,7 +7,7 @@ import 'package:momo/core/util/constants/text_style.dart';
 
 Widget getImageCard({
     required Function(bool) ontap, // true if iamge have otherwise false.
-    required String? imagePath,
+    required File? image,
     required String label,
 
     }) {
@@ -17,7 +19,7 @@ Widget getImageCard({
 
         // image: DecorationImage(image: ,fit: BoxFit.fill,))
       ),
-      child: imagePath!=null
+      child: image!=null
           ? 
           // show image 
           ClipRRect(
@@ -25,8 +27,8 @@ Widget getImageCard({
               child: Stack(
                 children: [
                   SizedBox.expand(
-                    child: Image.asset(
-                      imagePath, 
+                    child: Image.file(
+                      image, 
                       fit: BoxFit.cover,
                       alignment : Alignment.topCenter,
                     ),

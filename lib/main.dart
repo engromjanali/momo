@@ -4,6 +4,7 @@ import 'package:momo/core/controller/c_home.dart';
 import 'package:momo/prsentation/screens/explore/controllers/explore_controller.dart';
 import 'package:momo/prsentation/screens/home_page.dart';
 import 'package:momo/prsentation/screens/one_shot/controller/oneshot_controller.dart';
+import 'package:momo/test.dart';
 import 'package:provider/provider.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

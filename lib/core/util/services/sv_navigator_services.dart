@@ -3,7 +3,7 @@ import 'package:momo/data/model/one_shot/oneshot_item_model.dart';
 import 'package:momo/prsentation/screens/photos_without_prompt.dart';
 import 'package:momo/prsentation/screens/photos_with_prompt.dart';
 
-class NServices {
+class SvNavigator {
   void onseShotToApply({required OSItemModel osItem}) {
       print(osItem.toMap());
     // with prompt
