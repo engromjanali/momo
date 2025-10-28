@@ -8,7 +8,7 @@ class SvNavigator {
       print(osItem.toMap());
     // with prompt
     if (osItem.prompt?.isNotEmpty?? false) {
-      Get.to(() => PhotosWithPrompt(osItem: osItem,));
+      ///Get.to(() => PhotosWithPrompt(osItem: osItem,));
       // switch (osItem.imageBehaildText.length) {
       //   case 1:
       //     // navigate to prompt with one image
@@ -20,7 +20,7 @@ class SvNavigator {
     }
     // without prompt
     else {
-      Get.to(() => PhotosWithOutPrompt(osItem: osItem,));
+      ///Get.to(() => PhotosWithOutPrompt(osItem: osItem,));
     }
   }
 }

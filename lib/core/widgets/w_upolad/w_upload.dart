@@ -4,38 +4,35 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:momo/core/asset_manager/assets/images.dart';
-import 'package:momo/core/util/constants/all_enums.dart';
 import 'package:momo/core/util/constants/colors.dart';
 import 'package:momo/core/util/constants/text_style.dart';
 import 'package:momo/core/util/services/sv_image_picker.dart';
 import 'package:momo/core/widgets/bottom_button.dart';
-import 'package:momo/core/widgets/custom_Image_type_selection_dialog.dart';
 import 'package:momo/core/widgets/gender_selection.dart';
 import 'package:momo/core/widgets/get_raw_image_card.dart';
-import 'package:momo/core/widgets/get_started.dart';
+import 'package:momo/core/widgets/w_upolad/data/data_source/selected_images.dart';
+import 'package:momo/core/widgets/w_upolad/data/model/m_good_image.dart';
 import 'package:momo/data/model/explore/explore_item_model.dart';
 import 'package:momo/data/model/one_shot/oneshot_item_model.dart';
-import 'package:momo/data/model/one_shot/oneshot_model.dart';
 
-class UploadScreen extends StatefulWidget {
+class WUpload extends StatefulWidget {
   final bool isExplore;
   final EItemModel? eItem;
   final OSItemModel? oneShotItem;
-  const UploadScreen({
+  const WUpload({
     super.key,
     this.isExplore = true,
     this.eItem,
     this.oneShotItem,
   });
   @override
-  _UploadScreenState createState() => _UploadScreenState();
+  _WUploadState createState() => _WUploadState();
 }
 
-class _UploadScreenState extends State<UploadScreen> {
+class _WUploadState extends State<WUpload> {
   final ScrollController _scrollController = ScrollController();
   double _opacity = 0.0;
   double _imageScale = 1.0; // Scale for bounce effect
-  List<File> imageList = [];
   List<String> goodPhotosList = [
     Images.myPhoto,
     Images.myPhoto,
@@ -83,14 +80,14 @@ class _UploadScreenState extends State<UploadScreen> {
       backgroundColor: Colors.transparent,
       // upload button
       bottomNavigationBar: getBottomRoundedButton(
-        label: imageList.length < 8 ? "Upload Photo" : "Continue",
+        label: selectedImageList.length < 8 ? "Upload Photo" : "Continue",
         ontap: () {
-          if (imageList.length < 8) {
+          if (selectedImageList.length < 8) {
             // upload Photos
             _chooseImage();
           } else {
             // Continue
-            Get.to(()=>GenderSelection());
+            Get.to(() => GenderSelection());
           }
         },
       ),
@@ -196,7 +193,7 @@ class _UploadScreenState extends State<UploadScreen> {
             ),
 
             // your photos
-            if (imageList.isNotEmpty)
+            if (selectedImageList.isNotEmpty)
               Container(
                 color: MyColor.cardColor,
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
@@ -216,7 +213,7 @@ class _UploadScreenState extends State<UploadScreen> {
                                   crossAxisCount: 3,
                                   childAspectRatio: 1,
                                 ),
-                            itemCount: imageList.length,
+                            itemCount: selectedImageList.length + 3,
                             shrinkWrap: true,
                             // scrollDirection: Axis.horizontal,
                             itemBuilder: (_, index) {
@@ -228,13 +225,15 @@ class _UploadScreenState extends State<UploadScreen> {
                                     if (isImage) {
                                       // remove image
                                       setState(() {
-                                        imageList.removeAt(index);
+                                        selectedImageList.removeAt(index);
                                       });
                                     } else {
                                       await _chooseImage();
                                     }
                                   },
-                                  image: imageList[index],
+                                  image: index >= selectedImageList.length
+                                      ? MGoodImage()
+                                      : selectedImageList[index],
                                   label: "Addd Image",
                                 ),
                               );
@@ -293,16 +292,21 @@ class _UploadScreenState extends State<UploadScreen> {
   }
 
   Future<void> _chooseImage() async {
-    if (imageList.length < 8) {
-      List<XFile>? pickedImageList = await SvImagePicker()
-          .pickMultipleImage();
+    if (selectedImageList.length < 8) {
+      List<XFile>? pickedImageList = await SvImagePicker().pickMultipleImage();
 
       if (pickedImageList != null) {
         // remember it's file not asset.
         setState(() {
-          imageList.insertAll(
-            0,
-            pickedImageList.map((image) => File(image.path)).toList(),
+          selectedImageList.addAll(
+            pickedImageList
+                .map(
+                  (image) => MGoodImage(
+                    image: File(image.path).path,
+                    isGoodImage: (pickedImageList.indexOf(image) % 2) == 0,
+                  ),
+                )
+                .toList(),
           );
         });
       }

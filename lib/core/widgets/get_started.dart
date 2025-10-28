@@ -8,7 +8,7 @@ import 'package:momo/core/util/constants/text_style.dart';
 import 'package:momo/core/widgets/CustomElevatedButton.dart';
 import 'package:momo/core/widgets/bottom_button.dart';
 import 'package:momo/core/widgets/get_raw_image_card.dart';
-import 'package:momo/core/widgets/upload_screen.dart';
+import 'package:momo/core/widgets/w_upolad/w_upload.dart';
 
 class GetStarted extends StatefulWidget {
   final ImageType imageType;
@@ -38,7 +38,7 @@ extendBody: true,
                     label: "Get Stared",
                     margin: EdgeInsets.only(bottom: 0, top: 10),
                     ontap: () {
-                      Get.to(()=>UploadScreen());
+                      Get.to(()=>WUpload());
                     },
                   ),
       body: Column(
