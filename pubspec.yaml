@@ -1,0 +1,65 @@
+name: momo
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # 🌐 Internationalization
+  intl: ^0.20.2 # Dates, numbers & i18n
+
+  # Files and Utilities
+  url_launcher: ^6.3.2
+  another_flushbar: ^1.12.30
+  image_picker: ^1.2.0
+
+  cupertino_icons: ^1.0.8
+  flutter_screenutil: ^5.9.3 #responsive design
+  get: ^4.7.2 # controller 
+  shared_preferences: ^2.5.3
+  dio: ^5.9.0
+
+  flutter_svg: ^2.2.1 # to show svg logo
+
+  firebase_core: ^4.2.0 # Core Firebase initialisation
+  firebase_messaging: ^16.0.3 # FCM push notifications
+  flutter_local_notifications: ^19.4.2 # Local/scheduled notifications
+  firebase_analytics: ^12.0.3
+  firebase_auth: ^6.0.2
+
+  google_sign_in: ^7.2.0
+  sign_in_with_apple: ^7.0.1
+  cached_network_image: ^3.4.1
+  flutter_datetime_picker_plus: ^2.2.0
+  # shimmer effect.
+  skeletonizer: ^2.1.0+1 
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # 🧹 Code Quality
+  flutter_lints: ^6.0.0 # Recommended Flutter lints
+
+  # ⚙️ Code Generation
+  build_runner: ^2.5.3 # Runs code generators
+  flutter_gen_runner: ^5.10.0 # Generates typed asset accessors # dart run build_runner build
+
+
+
+flutter:
+
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+    - assets/logo/

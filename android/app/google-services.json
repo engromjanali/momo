@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "643568027119",
+    "project_id": "momo-6e52e",
+    "storage_bucket": "momo-6e52e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643568027119:android:bbad90d790f17e8d87221a",
+        "android_client_info": {
+          "package_name": "com.engromjanali.momo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwRcDkjhrbnaxGts8kEr6YYPaQ3AJu5-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
