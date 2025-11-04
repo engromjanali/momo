@@ -7,10 +7,10 @@
         android:label="momo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-         <!-- reference "sign in with apple"|"first two line" Set up the Sign in with Apple activity, such that it's callable from the browser-redirect -->
+         <!-- reference "sign in with apple"|"first two line" inside activity Set up the Sign in with Apple activity, such that it's callable from the browser-redirect -->
+            <!-- android:name="com.aboutyou.dart_packages.sign_in_with_apple.SignInWithAppleCallback"
+            android:exported="true" -->
         <activity
-            android:name="com.aboutyou.dart_packages.sign_in_with_apple.SignInWithAppleCallback"
-            android:exported="true"
 
 
             android:name=".MainActivity"
@@ -31,11 +31,11 @@
               />
             <intent-filter>
                 <!-- reference "sign in with apple" Set up the Sign in with Apple activity, such that it's callable from the browser-redirect -->
-                <action android:name="android.intent.action.VIEW" />
+                <!-- <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="signinwithapple" />
-                <data android:path="callback" />
+                <data android:path="callback" /> -->
 
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

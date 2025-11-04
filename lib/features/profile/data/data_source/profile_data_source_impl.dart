@@ -1,9 +1,9 @@
 
 import 'package:dio/dio.dart';
 import 'package:momo/core/functions/f_is_null.dart';
-import 'package:momo/profile/data/models/m_profile_update_payload.dart';
-import '../../../core/constants/env.dart';
-import '../../../../core/services/dio_service.dart';
+import 'package:momo/features/profile/data/models/m_profile_update_payload.dart';
+import '../../../../core/constants/env.dart';
+import '../../../../../core/services/dio_service.dart';
 import '../models/m_profile.dart';
 import 'patient_data_source.dart';
 

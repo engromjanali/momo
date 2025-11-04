@@ -1,9 +1,12 @@
+import 'package:momo/core/extensions/ex_padding.dart';
+import 'package:momo/core/functions/f_is_null.dart';
 import './/core/constants/colors.dart';
 import './/core/extensions/ex_build_context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../models/nav_bar_model.dart';
+import '../models/m_nav_bar_item.dart';
+import 'package:vector_math/vector_math_64.dart';
 
 class WBody extends StatelessWidget {
   const WBody({
@@ -15,11 +18,12 @@ class WBody extends StatelessWidget {
     required this.onTap,
   });
 
-  final List<NavigationBarItem> items;
+  final List<MNavBarItem> items;
   final int currentIndex;
   final Curve curve;
   final Duration duration;
   final Function(int index) onTap;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -30,33 +34,52 @@ class WBody extends StatelessWidget {
         for (final item in items)
           Builder(
             builder: (_) {
-              bool isIndex = items.indexOf(item) == currentIndex;
-              return InkWell(
-                onTap: () => onTap.call(items.indexOf(item)),
-                focusColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                splashColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                child: SvgPicture.asset(
-                  isIndex ? item.icon : item.unSelectedIcon,
-                  height: items.indexOf(item) == 2 ? 56.h : 25.h,
-                  width: items.indexOf(item) == 2 ? 56.w : 25.w,
-                  colorFilter: items.indexOf(item) == 2
-                      ? null
-                      : ColorFilter.mode(
-                          isIndex
-                              // ? PColors.primaryColor
+              final index = items.indexOf(item);
+              bool isSelected = index == currentIndex;
+
+              return GestureDetector(
+                onTap: () => onTap.call(index),
+                child: AnimatedContainer(
+                  duration: duration,
+                  curve: curve,
+                  transform: Matrix4.diagonal3(
+                    Vector3(
+                      isSelected ? 1.2 : 1.0, // x scale - wider
+                      isSelected ? 1.2 : 1.0, // y scale - height
+                      1,
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        isSelected ? item.icon : item.unSelectedIcon,
+                        height: 25.w,
+                        width: 25.w,
+                        colorFilter: ColorFilter.mode(
+                          isSelected
                               ? context.theme.brightness == Brightness.dark
-                                  ? PColors.primaryColor
-                                  : context.fillColor!
-                              // : context.primaryTextLarge!.color!,
-                              // : context.primaryTextLarge!.color!,
+                                    ? PColors.primayTextColorDark
+                                    : PColors.primayTextColorLight
                               : context.theme.brightness == Brightness.dark
-                                  ? Colors.white
-                                  : PColors.secondaryButtonColor,
+                              ? PColors.secondaryTextColorDark
+                              : PColors.secondaryTextColorLight,
                           BlendMode.srcIn,
                         ),
-                ),
+                      ),
+
+                      if (!isNull(item.title))
+                        Text(
+                          item.title!,
+                          style: TextStyle(
+                            color: isSelected
+                                ? context.primaryColor
+                                : context.secondaryColor,
+                          ),
+                        ),
+                    ],
+                  ),
+                ).pV(),
               );
             },
           ),

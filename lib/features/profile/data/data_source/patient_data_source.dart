@@ -1,4 +1,4 @@
-import 'package:momo/profile/data/models/m_profile_update_payload.dart';
+import 'package:momo/features/profile/data/models/m_profile_update_payload.dart';
 import '../models/m_profile.dart';
 
 abstract class IProfileData {

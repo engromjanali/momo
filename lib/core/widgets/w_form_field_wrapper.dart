@@ -26,7 +26,7 @@ class WFormFieldWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final labelStyle = context.labelSmall;
+    final labelStyle = context.textTheme?.bodyMedium;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -41,7 +41,7 @@ class WFormFieldWrapper extends StatelessWidget {
         if (errorText != null)
           Text(
             "$title is $errorText",
-            style: context.labelSmall?.copyWith(color: context.redColor, fontSize: 12.sp),
+            style: context.textTheme?.labelMedium?.copyWith(color: context.redColor, fontSize: 12.sp),
           ).pV(value: 3),
       ],
     );

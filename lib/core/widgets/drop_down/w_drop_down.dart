@@ -104,7 +104,7 @@ class _DropdownStatefulWrapperState<T>
               children: [
                 Text(
                   'Select ${widget.label}',
-                  style: context.primaryTextMedium,
+                  style: context.textTheme?.titleMedium,
                 ),
                 WTextField(
                   controller: searchController,
@@ -160,7 +160,7 @@ class _DropdownStatefulWrapperState<T>
     final selectedItem = state.value;
     final hasError = state.hasError;
     final errorText = state.errorText;
-    final labelStyle = context.labelSmall;
+    final labelStyle = context.textTheme?.bodyMedium;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,7 +171,7 @@ class _DropdownStatefulWrapperState<T>
             if (widget.isRequired)
               Text(
                 " *",
-                style: context.labelSmall?.copyWith(color: Colors.red),
+                style: context.textTheme?.bodyMedium?.copyWith(color: Colors.red),
               ),
           ],
         ).pB(value: 5),
@@ -189,8 +189,8 @@ class _DropdownStatefulWrapperState<T>
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: selectedItem != null
-                        ? context.primaryTextLarge!.color
-                        : context.secondaryTextSmaller!.color,
+                        ? context.textTheme?.titleMedium!.color
+                        : context.textTheme?.titleMedium!.color,
                     fontSize: selectedItem != null ? 14.sp : 12.sp,
                   ),
                 ),
@@ -204,7 +204,7 @@ class _DropdownStatefulWrapperState<T>
             padding: EdgeInsets.only(top: 5.h, left: 10.w),
             child: Text(
               errorText!,
-              style: context.labelSmall?.copyWith(
+              style: context.textTheme?.bodyMedium?.copyWith(
                 color: context.redColor,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,

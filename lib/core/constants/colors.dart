@@ -8,27 +8,56 @@ import 'package:flutter/material.dart';
 /// - Uses `withValues` for dynamic alpha adjustments
 class PColors {
   // Core Colors
-  static const primaryColor = Color(0xFF4857F6);
-  static const secondaryButtonColor = Color(0xFF002E5B);
-  static const appBarColor = Color(0xFF3AADE1);
+  static const primaryColorLight = Color(0XFFFFFFFF);
+  static const primaryColorDark = Color(0xFF141416);
+
+  static const nevColorLight = Color(0xEF000000);
+  static const nevColorDark = Color(0xEF000000);
+
+  static const appBarColorLight = Color(0xEF000000);
+  static const appBarColorDark = Color(0xEF000000);
+
+  static const cardColorLight = Color(0xFF141416);
+  static const cardColorDark = Color.fromARGB(255, 183, 183, 202);
+
+  static const primaryButtonColorLight = Color.fromARGB(255, 207, 119, 119);
+  static const primaryButtonColorDark = Color(0XFFFFFFFF);
+
+  //fill color
+  static const fillColorLight = Color(0xFF000000);
+  static const fillColorDark = Color(0xFF000000);
 
   // Backgrounds
-  static const backGroundColorLight = Color(0xFFF5F5F5);
-  static const backGroundColorDark = Color(0xFF121212);
+  static const backGroundColorLight = Color(0xFF000000);
+  static const backGroundColorDark = Color(0xFF000000);
 
   // Borders
-  static final borderColorLight = Color.fromRGBO(107, 123, 140, 0.1);
-  static final borderColorDark = const Color(0xFFB2B2B2);
+  static final borderColorLight = Color(0xFF2B2B2B);
+  static final borderColorDark = Color(0xFF2B2B2B);
 
   // Divider Colors/
-  static final dividerColorLight = PColors.primaryColor.withValues(alpha: 0.5);
-  static final dividerColorDark = PColors.primaryColor.withValues(alpha: 0.5);
+  static final dividerColorLight = Color(0xFF171717);
+  static final dividerColorDark = Color(0xFF171717);
 
   // Text Colors
-  static const primayTextColorLight = Colors.black;
-  static const primayTextColorDark = Colors.white;
-  static const secondaryTextColorLight = Color(0xFF727272);
-  static const secondaryTextColorDark = Color(0xFFBDBDBD);
-  static const additionalTextColorLight = Color(0xFF357A7B);
-  static const additionalTextColorDark = Color(0xFF6AB2B4); // optional tweak
+  static const primayTextColorLight = Color(0XFFFFFFFF);
+  static const primayTextColorDark = Color(0XFFFFFFFF);
+  static const secondaryTextColorLight = Color(0xFFAAAAAA);
+  static const secondaryTextColorDark = Color(0xFFAAAAAA);
+  static const additionalTextColorLight = Color(0XFFFFFFFF);
+  static const additionalTextColorDark = Color(0XFFFFFFFF);
+
+  // image filter color
+  static Gradient  imageFG = LinearGradient(
+    begin: Alignment.bottomCenter, // start at bottom
+    end: Alignment.topCenter,
+    stops: [0.05, 0.1, 0.2, 1],
+    // transform: GradientRotation(4),
+    colors: [
+      Colors.black, // bottom color
+      Colors.black.withAlpha(50), // bottom color
+      Colors.transparent, // top color
+      Colors.transparent, // top color
+    ],
+  );
 }

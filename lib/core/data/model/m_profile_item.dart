@@ -35,6 +35,7 @@ List<MProfileItem> myProfileList = [
     // onTap: () => SSettings().push(),
   ),
 ];
+
 List<MProfileItem> appSettingsList = [
   MProfileItem(
     logo: Assets.logo.myApps,
@@ -50,22 +51,13 @@ List<MProfileItem> appSettingsList = [
     logo: Assets.logo.community,
     title: "Join Community",
     onTap: () async {
-      await WDialog.showCustom(
-        context: NavigationService.currentContext,
-        children: [WJoinGroupPopUp()],
-      );
+      // await WDialog.showCustom(
+      //   context: NavigationService.currentContext,
+        // children: [WJoinGroupPopUp()],
+      // );
     },
   ),
-  MProfileItem(
-    logo: Assets.logo.community,
-    title: "Join Community",
-    onTap: () async {
-      await WDialog.showCustom(
-        context: NavigationService.currentContext,
-        children: [WJoinGroupPopUp()],
-      );
-    },
-  ),
+  
 ];
 
 // App Section
@@ -80,43 +72,10 @@ List<MProfileItem> appSectionList = [
     logo: Assets.logo.google,
     title: "Join Google Group",
     onTap: () async {
-      await WDialog.showCustom(
-        context: NavigationService.currentContext,
-        children: [WJoinGroupPopUp()],
-      );
+      // await WDialog.showCustom(
+      //   context: NavigationService.currentContext,
+      //   children: [WJoinGroupPopUp()],
+      // );
     },
   ),
 ];
-
-// // other Settings
-// // final CTheme cTheme = PowerVault.find();
-// List<MProfileItem> otherSettingsList = [
-//   // MProfileItem(
-//   //   title: "English",
-//   //   trailing: Icon(Icons.arrow_drop_down),
-//   // ),
-//   MProfileItem(
-//     title: cTheme.currentTheme.brightness == Brightness.dark
-//         ? "Switch Dark Mode"
-//         : "Switch Light Mode",
-//     trailing: cTheme.currentTheme.brightness == Brightness.dark
-//         ? Icon(Icons.dark_mode)
-//         : Icon(Icons.light_mode),
-//     onTap: () {
-//       otherSettingsList[0].trailing =
-//           cTheme.currentTheme.brightness == Brightness.dark
-//               ? Icon(Icons.dark_mode)
-//               : Icon(Icons.light_mode);
-
-//       otherSettingsList[0].title =
-//           cTheme.currentTheme.brightness == Brightness.dark
-//               ? "Switch Dark Mode"
-//               : "Switch Light Mode";
-
-//       cTheme.updateTheme();
-//     },
-//   ),
-//   MProfileItem(
-//     title: "Policies",
-//   ),
-// ];

@@ -1,15 +1,17 @@
+import 'dart:ffi';
+
 import 'package:dio/dio.dart';
-import 'package:get/get.dart';
 import 'package:momo/core/functions/f_printer.dart';
 import 'package:momo/core/functions/f_snackbar.dart';
 import 'package:momo/core/widgets/load_and_error/models/view_state_model.dart';
+import 'package:power_state/power_state.dart';
 
 /// 🧩 CBase — A reusable base power_state controller
 /// - ✅ Tracks loading/error state for views
 /// - ⚠️ Manages exception messages
 /// - 📣 Optional snackbars for UI feedback
 /// 📌 Extend this class to inherit state + error handling in all controllers.
-class CBase extends GetxController {
+class CBase extends PowerController {
   ViewState viewState = ViewState.initial;
   Object? _exception;
   Object? get exception {
@@ -32,9 +34,12 @@ class CBase extends GetxController {
     if (showSnackbar == true) {
       showSnackBar(errorMsg(), snackBarType: SnackBarType.warning);
     }
-// TODO: Add Sentry here so that we can observe the error analytics //
+    // TODO: Add Sentry here so that we can observe the error analytics //
   }
 
+  void update() {
+    notifyListeners();
+  }
 
   String errorMsg() {
     if (exception is DioException) {

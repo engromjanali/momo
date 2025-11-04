@@ -29,7 +29,7 @@ class WMenuList extends StatelessWidget {
       children: [
         Text(
           label,
-          style: context.primaryTextLarge?.copyWith(
+          style: context.textTheme?.titleLarge?.copyWith(
             fontWeight: FontWeight.w400,
             fontSize: 15.sp,
           ),
@@ -52,14 +52,14 @@ class WMenuList extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color:
-                      context.primaryTextLarge!.color!.withValues(alpha: 0.08),
+                      context.primaryColor!,
                   offset: Offset(1, 1),
                   blurRadius: 2,
                   spreadRadius: 0,
                 ),
                 BoxShadow(
                   color:
-                      context.primaryTextLarge!.color!.withValues(alpha: 0.08),
+                      context.secondaryColor!,
                   offset: Offset(0.5, 0.5),
                   blurRadius: 2,
                   spreadRadius: 0,
@@ -74,12 +74,12 @@ class WMenuList extends StatelessWidget {
                       height: 20.w,
                       width: 20.w,
                       colorFilter: ColorFilter.mode(
-                          context.primaryTextLarge!.color!, BlendMode.srcIn),
+                          context.secondaryColor!, BlendMode.srcIn),
                     ),
                   Expanded(
                     child: Text(
                       data.title ?? "",
-                      style: context.primaryTextMedium,
+                      style: context.textTheme?.titleMedium,
                     ),
                   ),
                   if (data.trailing != null) data.trailing!,
@@ -167,7 +167,7 @@ class WMenuList extends StatelessWidget {
 //                   Expanded(
 //                     child: Text(
 //                       data.title ?? "",
-//                       style: context.primaryTextMedium,
+//                       style: context.textTheme?.titleMedium,
 //                     ),
 //                   ),
 //                   if (data.trailing != null) data.trailing!,

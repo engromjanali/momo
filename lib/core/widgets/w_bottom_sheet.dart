@@ -27,7 +27,8 @@ class WBottomSheet {
         filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
         child: Container(
           padding: EdgeInsets.only(
-              bottom: MediaQuery.of(modalContext).viewInsets.bottom),
+            bottom: MediaQuery.of(modalContext).viewInsets.bottom,
+          ),
           height: dynamic ? null : ScreenUtil().screenHeight * 0.6,
           width: double.infinity,
           decoration: BoxDecoration(
@@ -53,7 +54,7 @@ class WBottomSheet {
                             children: [
                               Text(
                                 title ?? "N/A",
-                                style: modalContext.primaryTextLarge
+                                style: modalContext.textTheme?.titleMedium
                                     ?.copyWith(fontSize: 20.sp),
                               ),
                               const WClose(),
@@ -73,8 +74,9 @@ class WBottomSheet {
                         children: [
                           Text(
                             title ?? "N/A",
-                            style: modalContext.primaryTextLarge
-                                ?.copyWith(fontSize: 20.sp),
+                            style: modalContext.textTheme?.titleLarge?.copyWith(
+                              fontSize: 20.sp,
+                            ),
                           ),
                           const WClose(),
                         ],

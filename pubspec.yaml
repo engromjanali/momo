@@ -19,9 +19,11 @@ dependencies:
   another_flushbar: ^1.12.30
   image_picker: ^1.2.0
 
+  # 🔌 State Management
+  power_state: ^1.0.4 # Lightweight state management
+
   cupertino_icons: ^1.0.8
   flutter_screenutil: ^5.9.3 #responsive design
-  get: ^4.7.2 # controller 
   shared_preferences: ^2.5.3
   dio: ^5.9.0
 
@@ -39,6 +41,8 @@ dependencies:
   flutter_datetime_picker_plus: ^2.2.0
   # shimmer effect.
   skeletonizer: ^2.1.0+1 
+  google_mlkit_face_detection: ^0.13.1
+  auto_size_text: ^3.0.0 # auto size text.
 
 
 dev_dependencies:

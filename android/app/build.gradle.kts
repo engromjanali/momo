@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.engromjanali.momo"
+    namespace = "com.example.momo"
     compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
@@ -31,7 +31,7 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         // google new rule minSdk >= 23
-        minSdk = 23
+        minSdk = flutter.minSdkVersion
         // google new rule -36
         targetSdk = 36
         versionCode = flutter.versionCode

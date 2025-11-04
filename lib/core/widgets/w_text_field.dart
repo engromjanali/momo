@@ -134,11 +134,11 @@ class _WTextFieldState extends State<WTextField> {
         if (widget.label != null)
           Row(
             children: [
-              Text(widget.label!, style: context.labelSmall),
+              Text(widget.label!, style: context.textTheme?.labelSmall),
               if (widget.isRequired)
                 Text(
                   " *",
-                  style: context.labelSmall?.copyWith(color: context.redColor),
+                  style: context.textTheme?.labelSmall?.copyWith(color: context.redColor),
                 ),
             ],
           ).pB(),
@@ -176,7 +176,7 @@ class _WTextFieldState extends State<WTextField> {
       focusNode: widget.focusNode,
       maxLines: widget.maxLines,
       textInputAction: widget.textInputAction,
-      style: context.primaryTextMedium?.copyWith(
+      style: context.textTheme?.titleLarge?.copyWith(
         fontWeight: FontWeight.w400,
         fontSize: 14.sp,
       ),
@@ -184,7 +184,7 @@ class _WTextFieldState extends State<WTextField> {
         filled: true,
         fillColor: context.fillColor,
         prefixIconConstraints: BoxConstraints(maxHeight: 17.w),
-        errorStyle: context.labelSmall?.copyWith(
+        errorStyle: context.textTheme?.labelSmall?.copyWith(
           color: context.redColor,
           fontSize: 12.sp,
           fontWeight: FontWeight.w400,
@@ -207,7 +207,7 @@ class _WTextFieldState extends State<WTextField> {
                       height: 20.w,
                       width: 20.w,
                       colorFilter: ColorFilter.mode(
-                        context.primaryTextLarge!.color!,
+                        context.primaryColor!,
                         BlendMode.srcIn,
                       ),
                     ),

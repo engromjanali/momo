@@ -37,6 +37,9 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Explore.svg
+  String get explore => 'assets/icons/Explore.svg';
+
   /// File path: assets/icons/after_before.svg
   String get afterBefore => 'assets/icons/after_before.svg';
 
@@ -44,18 +47,33 @@ class $AssetsIconsGen {
   AssetGenImage get dashiconsAdminCustomizer =>
       const AssetGenImage('assets/icons/dashicons_admin-customizer.png');
 
+  /// File path: assets/icons/oneshot.svg
+  String get oneshot => 'assets/icons/oneshot.svg';
+
+  /// File path: assets/icons/profile.svg
+  String get profile => 'assets/icons/profile.svg';
+
   /// List of all assets
-  List<dynamic> get values => [afterBefore, dashiconsAdminCustomizer];
+  List<dynamic> get values => [
+    explore,
+    afterBefore,
+    dashiconsAdminCustomizer,
+    oneshot,
+    profile,
+  ];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
   /// File path: assets/images/x.jpg
   AssetGenImage get x => const AssetGenImage('assets/images/x.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [x];
+  List<AssetGenImage> get values => [logo, x];
 }
 
 class $AssetsLogoGen {
@@ -63,6 +81,9 @@ class $AssetsLogoGen {
 
   /// File path: assets/logo/404_error.svg
   String get a404Error => 'assets/logo/404_error.svg';
+
+  /// File path: assets/logo/Image.svg
+  String get image => 'assets/logo/Image.svg';
 
   /// File path: assets/logo/addbutton.svg
   String get addbutton => 'assets/logo/addbutton.svg';
@@ -134,6 +155,7 @@ class $AssetsLogoGen {
   /// List of all assets
   List<dynamic> get values => [
     a404Error,
+    image,
     addbutton,
     apple,
     community,

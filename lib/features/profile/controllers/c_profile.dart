@@ -1,8 +1,8 @@
-import 'package:get/get.dart';
 import 'package:momo/core/functions/f_loader.dart';
-import 'package:momo/profile/data/models/m_profile_update_payload.dart';
-import '../../../core/controllers/c_base.dart';
-import '../../../core/services/shared_preference_service.dart';
+import 'package:momo/features/profile/data/models/m_profile_update_payload.dart';
+import 'package:power_state/power_state.dart';
+import '../../../../core/controllers/c_base.dart';
+import '../../../../core/services/shared_preference_service.dart';
 import '../data/models/m_profile.dart';
 import '../data/repository/patient_repository.dart';
 
@@ -39,7 +39,7 @@ class CProfile extends CBase {
 
   Future<void> logOut() async {
     SharedPrefService.instance.clear();
-    Get.delete<CProfile>();
+    PowerVault.delete<CProfile>();
     // SSignIn().pushAndRemoveUntil();
   }
 }

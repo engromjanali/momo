@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:momo/core/controllers/c_theme.dart';
-import '../../../../core/widgets/pop_up/w_join_group_pop_up.dart';
+import '../../../../../core/widgets/pop_up/w_join_group_pop_up.dart';
 import '/./core/services/navigation_service.dart';
-import '../../../../gen/assets.gen.dart';
+import '../../../../../gen/assets.gen.dart';
 
 class MProfileItem {
   String? logo;
@@ -89,33 +88,33 @@ List<MProfileItem> appSectionList = [
   ),
 ];
 
-// other Settings
-final CTheme cTheme = Get.find();
-List<MProfileItem> otherSettingsList = [
-  // MProfileItem(
-  //   title: "English",
-  //   trailing: Icon(Icons.arrow_drop_down),
-  // ),
-  MProfileItem(
-    title: cTheme.currentTheme.brightness == Brightness.dark
-        ? "Switch Dark Mode"
-        : "Switch Light Mode",
-    trailing: cTheme.currentTheme.brightness == Brightness.dark
-        ? Icon(Icons.dark_mode)
-        : Icon(Icons.light_mode),
-    onTap: () {
-      otherSettingsList[0].trailing =
-          cTheme.currentTheme.brightness == Brightness.dark
-          ? Icon(Icons.dark_mode)
-          : Icon(Icons.light_mode);
+// // other Settings
+// final CTheme cTheme = Get.find();
+// List<MProfileItem> otherSettingsList = [
+//   // MProfileItem(
+//   //   title: "English",
+//   //   trailing: Icon(Icons.arrow_drop_down),
+//   // ),
+//   MProfileItem(
+//     title: cTheme.currentTheme.brightness == Brightness.dark
+//         ? "Switch Dark Mode"
+//         : "Switch Light Mode",
+//     trailing: cTheme.currentTheme.brightness == Brightness.dark
+//         ? Icon(Icons.dark_mode)
+//         : Icon(Icons.light_mode),
+//     onTap: () {
+//       otherSettingsList[0].trailing =
+//           cTheme.currentTheme.brightness == Brightness.dark
+//           ? Icon(Icons.dark_mode)
+//           : Icon(Icons.light_mode);
 
-      otherSettingsList[0].title =
-          cTheme.currentTheme.brightness == Brightness.dark
-          ? "Switch Dark Mode"
-          : "Switch Light Mode";
+//       otherSettingsList[0].title =
+//           cTheme.currentTheme.brightness == Brightness.dark
+//           ? "Switch Dark Mode"
+//           : "Switch Light Mode";
 
-      cTheme.updateTheme();
-    },
-  ),
-  MProfileItem(title: "Policies"),
-];
+//       cTheme.updateTheme();
+//     },
+//   ),
+//   MProfileItem(title: "Policies"),
+// ];

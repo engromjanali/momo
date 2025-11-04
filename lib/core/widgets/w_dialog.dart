@@ -190,7 +190,7 @@ class _WConfirmDialog extends StatelessWidget {
           Text(
             title!,
             textAlign: TextAlign.center,
-            style: context.primaryTextMedium,
+            style: context.textTheme?.titleMedium,
           ).pH(),
         Text(description, textAlign: TextAlign.center).pB(),
         if (okButton == true)

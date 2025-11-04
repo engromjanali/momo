@@ -76,7 +76,7 @@ class WSegmentedButtonFormField<T> extends StatelessWidget {
                 if (states.contains(WidgetState.selected)) {
                   return context.theme.textTheme.headlineLarge!.color!;
                 }
-                return context.primaryTextMedium!.color!;
+                return context.textTheme!.titleMedium!.color!;
               }),
               minimumSize: WidgetStatePropertyAll(
                 Size.fromHeight(PTheme.buttonHeight),
