@@ -6,6 +6,7 @@ import 'package:momo/core/constants/colors.dart';
 import 'package:momo/core/constants/default_values.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/functions/f_is_null.dart';
+import 'package:momo/core/functions/f_printer.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/image/m_image_payload.dart';
 import 'package:momo/core/widgets/image/w_image.dart';
@@ -17,7 +18,7 @@ class TopSlider extends StatefulWidget {
   final List<MExplore>? exploreList;
   final List<MOneshot>? oneshotList;
   final bool isExplore;
-  final Function(dynamic) onTap;
+  final ValueChanged<dynamic> onTap;
 
   const TopSlider({
     super.key,
@@ -44,7 +45,8 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
   }
 
   void startTimer() {
-    if (_timer != null) return;
+    if (_timer?.isActive??false) return;
+    printer("timer start");
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(seconds: 3), (_) {
         // setState(() {
@@ -54,7 +56,7 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
                   ? 0
                   : (_currentItem + 1) %
                         widget.exploreList!.length.clamp(1, 10))
-            : (widget.oneshotList!.isEmpty
+            : (isNull(widget.oneshotList)
                   ? 0
                   : (_currentItem + 1) %
                         widget.oneshotList!.length.clamp(1, 10));
@@ -91,6 +93,7 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
   @override
   void didPushNext() {
     _timer?.cancel();
+
     print('FirstScreen: নতুন screen এ গেছি');
   }
 
@@ -124,7 +127,7 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
             controller: pageController,
             itemCount: widget.isExplore
                 ? widget.exploreList?.length ?? 0
-                : widget.oneshotList!.length,
+                : widget.oneshotList?.length ?? 0,
 
             onPageChanged: (value) {
               setState(() {
@@ -293,6 +296,7 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
               );
             },
           ),
+
           // the linier indicator
           Positioned(
             bottom: 10,
@@ -300,10 +304,14 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
             right: 0,
             child: _IndicatorLine(
               height: 3,
-              indicatorColor: context.primaryColor ?? Colors.white,
+              // width: 100,
+              indicatorColor: context.primaryTextColor ?? Colors.white,
+              backgroundColor:
+                  context.secondaryTextColor ?? Colors.grey.shade300,
               itemCount: widget.isExplore
-                  ? widget.exploreList?.length ?? 0.clamp(0, 10)
-                  : widget.oneshotList!.length.clamp(0, 10),
+                  ? widget.exploreList?.length.clamp(0, 10) ?? 0
+                  : widget.oneshotList?.length.clamp(0, 10) ?? 0,
+
               selectedIndex: _currentItem,
             ),
           ),
@@ -334,10 +342,13 @@ class _IndicatorLine extends StatelessWidget {
     this.duration = const Duration(milliseconds: 300),
     this.curve = Curves.linear,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    final itemWidth = width ?? 200.w / itemCount;
+    final itemWidth =
+        (width ?? 200.w) /
+        (itemCount == 0
+            ? 1
+            : itemCount); // if itemcount ==0 we get an error because by 0 we can divide anything.
 
     return Center(
       child: Container(

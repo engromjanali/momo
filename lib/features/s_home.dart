@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:momo/core/widgets/nav/models/bottom_items.dart';
 import 'package:momo/core/widgets/nav/widgets/nav_bar_widget.dart';
 
@@ -22,22 +23,38 @@ class _SHomeState extends State<SHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      bottomNavigationBar: ValueListenableBuilder(
-        valueListenable: currentIndex,
-        builder: (context, value, _) {
-          return WNavigationBar(
-            items: homeNevItem,
-            currentIndex: value,
-            onChanged: (index) {
-              currentIndex.value = index;
-              setState(() {});
-            },
-          );
-        },
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, value) {
+        // WDialog.confirmExitLogout(
+        //   title: "Exit the App",
+        //   description: "Are you sure you want to exit the app?",
+        //   isLogOut: false,
+        //   context: context,
+        //   onYesPressed: () {
+        //     SystemNavigator.pop();
+        //     exit(0);
+        //   },
+        // );
+        SystemNavigator.pop();
+      },
+      child: Scaffold(
+        extendBody: true,
+        bottomNavigationBar: ValueListenableBuilder(
+          valueListenable: currentIndex,
+          builder: (context, value, _) {
+            return WNavigationBar(
+              items: homeNevItem,
+              currentIndex: value,
+              onChanged: (index) {
+                currentIndex.value = index;
+                setState(() {});
+              },
+            );
+          },
+        ),
+        body: homeNevItem[currentIndex.value].child,
       ),
-      body: homeNevItem[currentIndex.value].child,
     );
   }
 }

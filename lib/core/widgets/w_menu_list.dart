@@ -52,14 +52,14 @@ class WMenuList extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color:
-                      context.primaryColor!,
+                      context.primaryTextColor!,
                   offset: Offset(1, 1),
                   blurRadius: 2,
                   spreadRadius: 0,
                 ),
                 BoxShadow(
                   color:
-                      context.secondaryColor!,
+                      context.secondaryTextColor!,
                   offset: Offset(0.5, 0.5),
                   blurRadius: 2,
                   spreadRadius: 0,
@@ -74,7 +74,7 @@ class WMenuList extends StatelessWidget {
                       height: 20.w,
                       width: 20.w,
                       colorFilter: ColorFilter.mode(
-                          context.secondaryColor!, BlendMode.srcIn),
+                          context.secondaryTextColor!, BlendMode.srcIn),
                     ),
                   Expanded(
                     child: Text(

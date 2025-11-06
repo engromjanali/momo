@@ -66,6 +66,12 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// Directory path: assets/images/bad
+  $AssetsImagesBadGen get bad => const $AssetsImagesBadGen();
+
+  /// Directory path: assets/images/good
+  $AssetsImagesGoodGen get good => const $AssetsImagesGoodGen();
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -179,6 +185,59 @@ class $AssetsLogoGen {
     uploadApp,
     x,
   ];
+}
+
+class $AssetsImagesBadGen {
+  const $AssetsImagesBadGen();
+
+  /// File path: assets/images/bad/1.png
+  AssetGenImage get a1 => const AssetGenImage('assets/images/bad/1.png');
+
+  /// File path: assets/images/bad/2.png
+  AssetGenImage get a2 => const AssetGenImage('assets/images/bad/2.png');
+
+  /// File path: assets/images/bad/3.png
+  AssetGenImage get a3 => const AssetGenImage('assets/images/bad/3.png');
+
+  /// File path: assets/images/bad/4.png
+  AssetGenImage get a4 => const AssetGenImage('assets/images/bad/4.png');
+
+  /// File path: assets/images/bad/5.png
+  AssetGenImage get a5 => const AssetGenImage('assets/images/bad/5.png');
+
+  /// File path: assets/images/bad/6.png
+  AssetGenImage get a6 => const AssetGenImage('assets/images/bad/6.png');
+
+  /// File path: assets/images/bad/7.png
+  AssetGenImage get a7 => const AssetGenImage('assets/images/bad/7.png');
+
+  /// File path: assets/images/bad/8.png
+  AssetGenImage get a8 => const AssetGenImage('assets/images/bad/8.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [a1, a2, a3, a4, a5, a6, a7, a8];
+}
+
+class $AssetsImagesGoodGen {
+  const $AssetsImagesGoodGen();
+
+  /// File path: assets/images/good/1.png
+  AssetGenImage get a1 => const AssetGenImage('assets/images/good/1.png');
+
+  /// File path: assets/images/good/2.png
+  AssetGenImage get a2 => const AssetGenImage('assets/images/good/2.png');
+
+  /// File path: assets/images/good/3.png
+  AssetGenImage get a3 => const AssetGenImage('assets/images/good/3.png');
+
+  /// File path: assets/images/good/4.png
+  AssetGenImage get a4 => const AssetGenImage('assets/images/good/4.png');
+
+  /// File path: assets/images/good/5.png
+  AssetGenImage get a5 => const AssetGenImage('assets/images/good/5.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [a1, a2, a3, a4, a5];
 }
 
 class Assets {

@@ -16,5 +16,5 @@ class PDefaultValues {
   static const int minDOBDate = 1900;
   static const int passwordMinLength = 8;
   static const googleGroupLink =
-      "https://groups.google.com/u/0/g/apptestingservice";
+      "https://groups.google.com/u/0/g/apptestingservicex-xxx";
 }

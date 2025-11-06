@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:momo/core/functions/f_is_null.dart';
 
 /// 🧭 Custom AppBar with optional right-side widgets and back button toggle
 class WAppBar extends AppBar {
-  final String text;
+  final String? text;
   final List<Widget>? rightWidgets;
   final bool textPositionCenter;
   final bool hideBackButton;
@@ -10,7 +11,9 @@ class WAppBar extends AppBar {
   /// 🚫 AppBar without back button
   WAppBar({
     super.key,
-    required this.text,
+    super.backgroundColor,
+    super.foregroundColor,
+    this.text,
     this.rightWidgets,
     this.textPositionCenter = false,
   }) : hideBackButton = true;
@@ -25,13 +28,10 @@ class WAppBar extends AppBar {
 
   @override
   bool get automaticallyImplyLeading => hideBackButton;
-
   @override
   bool? get centerTitle => textPositionCenter;
-
   @override
-  Widget? get title => Text(text);
-
+  Widget? get title => isNull(text) ? null : Text(text!);
   @override
   List<Widget>? get actions => rightWidgets;
 }

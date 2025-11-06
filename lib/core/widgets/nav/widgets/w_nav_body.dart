@@ -73,8 +73,8 @@ class WBody extends StatelessWidget {
                           item.title!,
                           style: TextStyle(
                             color: isSelected
-                                ? context.primaryColor
-                                : context.secondaryColor,
+                                ? context.primaryTextColor
+                                : context.secondaryTextColor,
                           ),
                         ),
                     ],

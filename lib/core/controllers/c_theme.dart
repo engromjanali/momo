@@ -176,10 +176,11 @@ class CTheme extends CBase {
 
     // ▶️ AppBar Theme
     appBarTheme: AppBarTheme(
+      backgroundColor: PColors.appBarColorDark,
       iconTheme: const IconThemeData(color: PColors.primayTextColorDark),
       centerTitle: true,
       titleTextStyle: TextStyle(
-        color: PColors.appBarColorDark,
+        color: PColors.primayTextColorDark,
         fontWeight: FontWeight.w500,
         fontSize: 20.sp,
       ),

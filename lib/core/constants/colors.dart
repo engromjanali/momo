@@ -14,8 +14,8 @@ class PColors {
   static const nevColorLight = Color(0xEF000000);
   static const nevColorDark = Color(0xEF000000);
 
-  static const appBarColorLight = Color(0xEF000000);
-  static const appBarColorDark = Color(0xEF000000);
+  static const appBarColorLight = Color(0XFFFFFFFF);
+  static const appBarColorDark = Color(0xFF000000);
 
   static const cardColorLight = Color(0xFF141416);
   static const cardColorDark = Color.fromARGB(255, 183, 183, 202);
@@ -48,7 +48,7 @@ class PColors {
   static const additionalTextColorDark = Color(0XFFFFFFFF);
 
   // image filter color
-  static Gradient  imageFG = LinearGradient(
+  static Gradient imageFG = LinearGradient(
     begin: Alignment.bottomCenter, // start at bottom
     end: Alignment.topCenter,
     stops: [0.05, 0.1, 0.2, 1],

@@ -7,13 +7,18 @@ class CExplore extends CBase {
     MExplore(
       title: "linkedin",
       items: [
-        EItem(images: ["as", "as", "as"], title: "as", details: "sdfa"),
+        EItem(images: ["as", "as", "as"], title: "a", details: "sdfa"),
       ],
     ),
     MExplore(
-      title: "linkedin",
+      title: "linkedin2",
       items: [
-        EItem(images: ["as", "as", "as"], title: "as", details: "sdfa"),
+        EItem(
+          images: ["as", "as", "as"],
+          title: "b",
+          details: "sdfa",
+          spacificaton: ["12", "213123", "@3123"],
+        ),
       ],
     ),
   ];

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:momo/core/extensions/ex_build_context.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/features/explore/controller/c_explore.dart';
-import 'package:momo/features/explore/data/model/m_explore.dart';
-import 'package:momo/features/explore/widget/w_explore_list.dart';
+import 'package:momo/features/explore/widget/w_section.dart';
 import 'package:momo/features/explore/widget/w_top_slider.dart';
 import 'package:power_state/power_state.dart';
 
@@ -35,6 +35,7 @@ class _SExploreState extends State<SExplore> {
     CExplore cExplore = PowerVault.put(CExplore());
     return CustomScrollView(
       slivers: [
+        // top slider
         SliverToBoxAdapter(
           child: TopSlider(
             isExplore: true,
@@ -42,13 +43,17 @@ class _SExploreState extends State<SExplore> {
             onTap: (itemIndex) {},
           ),
         ),
-
+        // explore section list
         SliverList.builder(
           itemCount: cExplore.exploreList?.length ?? 0,
           itemBuilder: (_, index) {
-            return WExploreList(mExplore: cExplore.exploreList![index]);
+            return WSection(
+              mExplore: cExplore.exploreList![index],
+              isExplore: true,
+            );
           },
         ),
+        SliverToBoxAdapter(child: gapY(100.h)),
       ],
     );
   }

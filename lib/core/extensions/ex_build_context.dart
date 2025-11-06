@@ -17,8 +17,11 @@ extension ThemeExtension on BuildContext {
   ColorScheme? get button => Theme.of(this).buttonTheme.colorScheme;
   Color? get fillColor => Theme.of(this).inputDecorationTheme.fillColor;
   Color? get indicatorColor => Theme.of(this).tabBarTheme.indicatorColor;
-  Color? get primaryColor => Theme.of(this).primaryColor;
-  Color? get secondaryColor => Theme.of(this).textTheme.bodyLarge!.color;
-  // Text Styles 
+  // text color
+  Color? get secondaryTextColor => Theme.of(this).textTheme.bodyLarge!.color;
+  Color? get primaryTextColor => Theme.of(this).primaryColor;
+  // background color
+  Color? get backgroundColor => Theme.of(this).scaffoldBackgroundColor;
+  // Text theme
   TextTheme? get textTheme => Theme.of(this).textTheme;
 }

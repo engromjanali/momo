@@ -1,6 +1,6 @@
 class MOneshot {
   final String? title;
-  final List<Item>? items;
+  final List<OItem>? items;
 
   MOneshot({this.title, this.items});
 
@@ -8,7 +8,7 @@ class MOneshot {
     title: json["title"],
     items: json["items"] == null
         ? []
-        : List<Item>.from(json["items"]!.map((x) => Item.fromJson(x))),
+        : List<OItem>.from(json["items"]!.map((x) => OItem.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -19,7 +19,7 @@ class MOneshot {
   };
 }
 
-class Item {
+class OItem {
   final String? title;
   final String? subTitle;
   final String? image;
@@ -27,7 +27,7 @@ class Item {
   final List<String>? imageBehaildText;
   final List<String>? inputImages;
 
-  Item({
+  OItem({
     this.title,
     this.subTitle,
     this.image,
@@ -36,7 +36,7 @@ class Item {
     this.inputImages,
   });
 
-  factory Item.fromJson(Map<String, dynamic> json) => Item(
+  factory OItem.fromJson(Map<String, dynamic> json) => OItem(
     title: json["title"],
     subTitle: json["subTitle"],
     image: json["image"],

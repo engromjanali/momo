@@ -133,7 +133,7 @@ class _WFallbackImage extends StatelessWidget {
       height: payload?.height ?? PTheme.imageDefaultY,
       width: payload?.width ?? PTheme.imageDefaultX,
       fit: payload?.fit ?? BoxFit.contain,
-      colorFilter: ColorFilter.mode(context.primaryColor!, BlendMode.srcIn),
+      colorFilter: ColorFilter.mode(context.primaryTextColor!, BlendMode.srcIn),
     );
   }
 }

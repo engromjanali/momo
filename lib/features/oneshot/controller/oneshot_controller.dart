@@ -4,6 +4,6 @@ import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
 
 
 class COneShot extends CBase {
-  List<MOneshot> _oneShotList = [];
-  List<MOneshot> get oneShotList => _oneShotList;
+  List<MOneshot>? _oneShotList;
+  List<MOneshot>? get oneShotList => _oneShotList;
 }

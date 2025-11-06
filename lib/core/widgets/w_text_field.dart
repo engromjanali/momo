@@ -207,7 +207,7 @@ class _WTextFieldState extends State<WTextField> {
                       height: 20.w,
                       width: 20.w,
                       colorFilter: ColorFilter.mode(
-                        context.primaryColor!,
+                        context.primaryTextColor!,
                         BlendMode.srcIn,
                       ),
                     ),

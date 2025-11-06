@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:momo/core/constants/dimension_theme.dart';
+import 'package:momo/core/extensions/ex_build_context.dart';
+
+class WBottomNavButton extends StatelessWidget {
+  final String label;
+  final Function() ontap;
+  final bool isEnabled;
+  const WBottomNavButton({
+    super.key,
+    required this.label,
+    required this.ontap,
+    this.isEnabled = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: ontap,
+      child: Container(
+        height: 60.h,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(PTheme.boarderRadius),
+          color: isEnabled
+              ? context.primaryTextColor
+              : context.secondaryTextColor,
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          label,
+          style: context.textTheme?.titleLarge?.copyWith(
+            color: context.backgroundColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
