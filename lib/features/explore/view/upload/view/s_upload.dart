@@ -29,7 +29,6 @@ class SUpload extends StatefulWidget {
 class _SUploadState extends State<SUpload> {
   final ScrollController _scrollController = ScrollController();
   double _opacity = 0.0;
-  double _imageScale = 1.0; // Scale for bounce effect
   List<String> goodPhotosList = [
     Assets.images.good.a1.path,
     Assets.images.good.a2.path,
@@ -54,12 +53,6 @@ class _SUploadState extends State<SUpload> {
     super.initState();
     _scrollController.addListener(() {
       setState(() {
-        if (_scrollController.offset < 0) {
-          _imageScale =
-              1 +
-              ((_scrollController.offset).clamp(-100, 0)).abs().toDouble() /
-                  1000;
-        }
         // Adjust opacity based on scroll position (e.g., 0 to 1 over 400 pixels)
         _opacity = (_scrollController.offset / 90).clamp(0.0, 1.0);
       });
@@ -91,7 +84,7 @@ class _SUploadState extends State<SUpload> {
       bottomNavigationBar: WBottomNavButton(
         label: goodImageCount() >= 8
             ? "Continue"
-            : "Upload ${selectedImageList.isEmpty ? "" : "${8 - goodImageCount()} " + "More"} Photo",
+            : "Upload ${isNull(selectedImageList) ? "" : "${8 - goodImageCount()} " + "More "}Photo",
         ontap: () {
           if (goodImageCount() < 8) {
             // upload more Photos
@@ -101,7 +94,7 @@ class _SUploadState extends State<SUpload> {
             SGenderSelection().pushReplacement();
           }
         },
-        isEnabled: goodImageCount() < 8? false : true,
+        isEnabled: goodImageCount() < 8 ? false : true,
       ).pAll(),
       appBar: AppBar(
         scrolledUnderElevation: 0,
@@ -150,7 +143,7 @@ class _SUploadState extends State<SUpload> {
 
             // your photos
             WSectionWrapper(
-              title: isNull(selectedImageList) ? "Your Photos" : "",
+              title: !isNull(selectedImageList) ? "Your Photos" : "",
               child: Container(
                 color: context.backgroundColor,
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
@@ -244,7 +237,7 @@ class _SUploadState extends State<SUpload> {
       }
     } catch (e) {
       hideOverlay();
-      print("Error-----------$e");
+      printer("Error-----------$e");
     }
   }
 }

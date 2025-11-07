@@ -192,7 +192,7 @@ class _GetThisPackState extends State<SGetThisPack> {
                               itemCount:
                                   // widget.isExplore
                                   //     ?
-                                  widget.eItem!.spacificaton?.length ?? 0,
+                                  widget.eItem?.spacificaton?.length ?? 0,
                               // : widget.oneShotItem!.spacificaton.length,
                               itemBuilder: (_, index) {
                                 return Row(

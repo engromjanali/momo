@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/features/explore/widget/w_section.dart';
 import 'package:momo/features/explore/widget/w_top_slider.dart';
-import 'package:momo/features/oneshot/controller/oneshot_controller.dart';
+import 'package:momo/features/oneshot/controller/c_oneshot.dart';
 import 'package:power_state/power_state.dart';
 
 class SOneshot extends StatefulWidget {

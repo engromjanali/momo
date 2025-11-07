@@ -43,9 +43,8 @@ class $AssetsIconsGen {
   /// File path: assets/icons/after_before.svg
   String get afterBefore => 'assets/icons/after_before.svg';
 
-  /// File path: assets/icons/dashicons_admin-customizer.png
-  AssetGenImage get dashiconsAdminCustomizer =>
-      const AssetGenImage('assets/icons/dashicons_admin-customizer.png');
+  /// File path: assets/icons/dashicons.svg
+  String get dashicons => 'assets/icons/dashicons.svg';
 
   /// File path: assets/icons/oneshot.svg
   String get oneshot => 'assets/icons/oneshot.svg';
@@ -54,10 +53,10 @@ class $AssetsIconsGen {
   String get profile => 'assets/icons/profile.svg';
 
   /// List of all assets
-  List<dynamic> get values => [
+  List<String> get values => [
     explore,
     afterBefore,
-    dashiconsAdminCustomizer,
+    dashicons,
     oneshot,
     profile,
   ];
@@ -65,6 +64,10 @@ class $AssetsIconsGen {
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/Rating Icon.png
+  AssetGenImage get ratingIcon =>
+      const AssetGenImage('assets/images/Rating Icon.png');
 
   /// Directory path: assets/images/bad
   $AssetsImagesBadGen get bad => const $AssetsImagesBadGen();
@@ -79,7 +82,7 @@ class $AssetsImagesGen {
   AssetGenImage get x => const AssetGenImage('assets/images/x.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [logo, x];
+  List<AssetGenImage> get values => [ratingIcon, logo, x];
 }
 
 class $AssetsLogoGen {

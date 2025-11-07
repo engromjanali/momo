@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:momo/core/constants/all_enums.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
+import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_app_bar.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
+import 'package:momo/features/explore/view/upload/view/s_act_name_selection.dart';
 
 class SGenderSelection extends StatefulWidget {
   const SGenderSelection({super.key});
@@ -21,7 +23,7 @@ class _GenderSelectionState extends State<SGenderSelection> {
       bottomNavigationBar: WBottomNavButton(
         label: "Continue",
         ontap: () {
-          // Get.to(()=>ModelNameScreen());
+          SActNameSelection().push();
         },
       ).pAll(),
       backgroundColor: Colors.black,
@@ -43,21 +45,21 @@ class _GenderSelectionState extends State<SGenderSelection> {
               return Column(
                 spacing: 10,
                 children: [
-                  getGenderButton(
+                  WGenderSelectionButton(
                     onTap: () {
                       selectedGender.value = Gender.female;
                     },
                     label: "Female",
                     isSelected: selectedGender.value == Gender.female,
                   ),
-                  getGenderButton(
+                  WGenderSelectionButton(
                     onTap: () {
                       selectedGender.value = Gender.male;
                     },
                     label: "Male",
                     isSelected: selectedGender.value == Gender.male,
                   ),
-                  getGenderButton(
+                  WGenderSelectionButton(
                     onTap: () {
                       selectedGender.value = Gender.other;
                     },
@@ -74,12 +76,21 @@ class _GenderSelectionState extends State<SGenderSelection> {
       ),
     );
   }
+}
 
-  Widget getGenderButton({
-    required Function() onTap,
-    required String label,
-    required bool isSelected,
-  }) {
+class WGenderSelectionButton extends StatelessWidget {
+  final Function() onTap;
+  final String label;
+  final bool isSelected;
+  const WGenderSelectionButton({
+    super.key,
+    required this.onTap,
+    required this.label,
+    required this.isSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(

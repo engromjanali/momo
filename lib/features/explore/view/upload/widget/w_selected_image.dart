@@ -9,7 +9,8 @@ import 'package:momo/features/explore/view/upload/data/model/m_selected_image.da
 class WSelectedImage extends StatelessWidget {
   final Function() onTap;
   final MSImage? msImage;
-  const WSelectedImage({super.key, required this.onTap, required this.msImage});
+  final String? label;
+  const WSelectedImage({super.key, required this.onTap, required this.msImage, this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +97,7 @@ class WSelectedImage extends StatelessWidget {
                         color: context.secondaryTextColor,
                       ),
                       Text(
-                        "Add Image",
+                        label ?? "Add Image",
                         style: context.textTheme?.bodyMedium,
                         textAlign: TextAlign.center,
                       ),

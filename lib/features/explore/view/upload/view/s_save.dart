@@ -1,7 +1,16 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
+import 'package:momo/core/services/navigation_service.dart';
+import 'package:momo/core/widgets/image/m_image_payload.dart';
+import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
+import 'package:momo/features/explore/view/upload/view/s_share.dart';
 import 'package:momo/gen/assets.gen.dart';
 
 class SSave extends StatefulWidget {
@@ -12,12 +21,12 @@ class SSave extends StatefulWidget {
 }
 
 class _SSaveState extends State<SSave> {
-  List<String> badPhotosList = [
-    Assets.images.x.path,
-    Assets.images.x.path,
-    Assets.images.x.path,
-    Assets.images.x.path,
-    Assets.images.x.path,
+  final List<String> filterList = [
+    Assets.images.good.a1.path,
+    Assets.images.good.a2.path,
+    Assets.images.good.a3.path,
+    Assets.images.good.a4.path,
+    Assets.images.good.a5.path,
   ];
   int selectedIndex = 0;
 
@@ -41,7 +50,7 @@ class _SSaveState extends State<SSave> {
                   children: [
                     SizedBox.expand(
                       child: Image.asset(
-                        Assets.images.x.path,
+                        filterList[selectedIndex],
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -51,24 +60,23 @@ class _SSaveState extends State<SSave> {
                       child: Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.all(10),
+                            padding: EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               color: context.cardColor,
                               shape: BoxShape.circle,
                             ),
                             child: Container(
-                              padding: EdgeInsets.symmetric(
-                                vertical: 1,
-                                horizontal: 4,
-                              ),
+                              height: 20.h,
+                              width: 30.w,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 color: Colors.white,
                               ),
-                              child: Text(
-                                "HD",
-                                style: context.textTheme?.titleMedium?.copyWith(
-                                  color: Colors.indigoAccent,
+                              child: Center(
+                                child: Text(
+                                  "HD",
+                                  style: context.textTheme?.titleSmall
+                                      ?.copyWith(color: Colors.indigoAccent),
                                 ),
                               ),
                             ),
@@ -79,10 +87,7 @@ class _SSaveState extends State<SSave> {
                               color: context.cardColor,
                               shape: BoxShape.circle,
                             ),
-                            // child: CustomIcon(
-                            //   path: IconManager.afterBefore,
-                            //   color: MyColor.white,
-                            // ),
+                            child: SvgPicture.asset(Assets.icons.afterBefore),
                           ),
                         ],
                       ),
@@ -100,33 +105,34 @@ class _SSaveState extends State<SSave> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  SizedBox(
-                    height: 110,
-                    width: 110,
+                  SizedBox.square(
+                    dimension: 110.w,
                     child: Container(
-                      margin: EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         color: context.cardColor,
-                        border: Border.all(color: Colors.red),
-                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: context.secondaryTextColor ?? Colors.grey,
+                        ),
+                        borderRadius: BorderRadius.circular(
+                          PTheme.boarderRadius,
+                        ),
                       ),
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(10),
+                            SvgPicture.asset(
+                              Assets.icons.dashicons,
+                              height: 30.h,
+                              colorFilter: ColorFilter.mode(
+                                context.primaryTextColor ?? Colors.green,
+                                BlendMode.srcIn,
                               ),
-                              // child: CustomIcon(
-                              //   path: IconManager.deshIcon,
-                              //   color: MyColor.white,
-                              // ),
+                            ).pB(),
+                            Text(
+                              "Custom",
+                              style: context.textTheme?.titleSmall,
                             ),
-
-                            Text("Custom", style: context.textTheme?.bodyLarge),
                           ],
                         ),
                       ),
@@ -134,27 +140,55 @@ class _SSaveState extends State<SSave> {
                   ),
 
                   Center(
-                    child: Container(height: 50, width: 1, color: Colors.white),
-                  ),
+                    child: Container(
+                      height: 50.h,
+                      width: 1.w,
+                      color: context.secondaryTextColor,
+                    ),
+                  ).pH(),
                   Expanded(
                     child: StatefulBuilder(
                       builder: (context, setLocalState) {
                         return ListView.builder(
-                          itemCount: badPhotosList.length,
+                          itemCount: filterList.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (_, index) {
-                            return SizedBox(
-                              width: 110,
-                              child: _getImageWidget(
-                                ontap: () {
-                                  setLocalState(() {
-                                    selectedIndex = index;
-                                  });
-                                },
-                                imagePath: badPhotosList[index],
-                                isGood: false,
-                                isSelected: index == selectedIndex,
-                              ),
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectedIndex = index;
+                                });
+                              },
+                              child: SizedBox(
+                                width: 110.w,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    SizedBox.square(
+                                      dimension: 110.w,
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadiusGeometry.circular(
+                                              PTheme.boarderRadius,
+                                            ),
+                                        child: Image.asset(
+                                          filterList[index],
+                                          fit: BoxFit.cover,
+                                          // payload: MImagePayload(
+                                          //   fit: BoxFit.fill,
+                                          // ),
+                                        ),
+                                      ),
+                                    ),
+                                    if (selectedIndex == index)
+                                      Icon(
+                                        Icons.circle,
+                                        color: context.primaryTextColor,
+                                        size: 10.w,
+                                      ),
+                                  ],
+                                ),
+                              ).pR(),
                             );
                           },
                         );
@@ -178,7 +212,7 @@ class _SSaveState extends State<SSave> {
                   child: WBottomNavButton(
                     label: "Save",
                     ontap: () {
-                      // Get.to(() => SShare());
+                      SShare().push();
                     },
                   ).pAll(),
                 ),
@@ -186,59 +220,6 @@ class _SSaveState extends State<SSave> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _getImageWidget({
-    required String imagePath,
-    bool isGood = true,
-    required Function() ontap,
-    bool isSelected = false,
-  }) {
-    return GestureDetector(
-      onTap: ontap,
-      child: Container(
-        margin: EdgeInsets.all(5),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-        child:
-            // show image
-            Column(
-              children: [
-                if (!isSelected) SizedBox(height: 10),
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Stack(
-                      children: [
-                        SizedBox.expand(
-                          child: Image.asset(
-                            imagePath,
-                            fit: BoxFit.fill,
-                            alignment: Alignment.topCenter,
-                          ),
-                        ),
-                        if (isSelected)
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: IconButton(
-                              onPressed: ontap,
-                              icon: Icon(
-                                isGood ? Icons.check_circle : Icons.cancel,
-                                color: isGood ? Colors.green : Colors.red,
-                                size: 20,
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                ),
-                if (isSelected)
-                  Icon(Icons.circle, color: Colors.white, size: 10),
-              ],
-            ),
       ),
     );
   }

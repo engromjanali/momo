@@ -4,22 +4,25 @@ import 'package:momo/core/constants/colors.dart';
 import 'package:momo/core/constants/default_values.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/functions/f_is_null.dart';
+import 'package:momo/core/functions/f_printer.dart';
 import 'package:momo/core/widgets/image/m_image_payload.dart';
 import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/features/explore/data/model/m_explore.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
 
 class WItem extends StatelessWidget {
-  final EItem? eItem;
   final bool isExplore;
+  final EItem? eItem;
   final OItem? oItem;
   final Function() onTap;
+  final Size? size;
   const WItem({
     super.key,
     this.eItem,
     required this.isExplore,
     this.oItem,
     required this.onTap,
+    this.size,
   });
 
   @override
@@ -27,6 +30,7 @@ class WItem extends StatelessWidget {
     if (isNull(eItem) && isNull(oItem)) {
       return WImage("Error");
     }
+    printer(isExplore);
     return GestureDetector(
       onTap: onTap,
       child: Stack(
@@ -34,8 +38,8 @@ class WItem extends StatelessWidget {
           Stack(
             children: [
               SizedBox(
-                height: 200.h,
-                width: 150.w,
+                height: size?.height ?? 200.h,
+                width: size?.width ?? 150.w,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: WImage(
@@ -45,8 +49,8 @@ class WItem extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 200.h,
-                width: 150.w,
+                height: size?.height ?? 200.h,
+                width: size?.width ?? 150.w,
 
                 decoration: BoxDecoration(
                   gradient: PColors.imageFG,

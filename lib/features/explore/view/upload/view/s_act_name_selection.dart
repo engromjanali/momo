@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
+import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_app_bar.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
+import 'package:momo/features/explore/view/upload/view/s_save.dart';
 
 class SActNameSelection extends StatefulWidget {
   const SActNameSelection({super.key});
@@ -20,67 +23,55 @@ class _ModelNameScreenState extends State<SActNameSelection> {
           ? WBottomNavButton(
               label: "Continue",
               ontap: () {
-                // Get.to(() => SSave());
+                SSave().push();
               },
             ).pAll()
           : null,
       backgroundColor: Colors.black,
       appBar: WAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          spacing: 20,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20.0),
-              child: Text(
-                "Name Your AI Model",
-                style: context.textTheme?.titleMedium,
-              ),
+      body: Column(
+        spacing: 20,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Name Your AI Model", style: context.textTheme?.titleMedium),
+          Text(
+            "This information will improve your selection of medl images for the generation of your photos.",
+            style: context.textTheme?.bodyMedium,
+            textAlign: TextAlign.justify,
+          ).pB(),
+          Container(
+            decoration: BoxDecoration(
+              color: context.cardColor,
+              borderRadius: BorderRadius.circular(PTheme.boarderRadius),
             ),
-            Text(
-              "This information will improve your selection of medl images for the generation of your photos.",
-              style: context.textTheme?.bodyMedium,
-            ),
-            Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: context.cardColor,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: TextField(
-                controller: nameController,
-                autocorrect: false,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  label: Text(
-                    "Model Name",
-                    style: context.textTheme?.titleMedium,
-                  ),
-                  hint: Text(
-                    "Type Your Model Name",
-                    style: context.textTheme?.bodyMedium,
-                  ),
-                  suffixIcon: nameController.text.isNotEmpty
-                      ? IconButton(
-                          onPressed: () {
-                            nameController.clear();
-                          },
-                          icon: Icon(Icons.cancel),
-                          color: Colors.white,
-                        )
-                      : null,
+            child: TextField(
+              controller: nameController,
+              autocorrect: false,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                label: Text("Model Name", style: context.textTheme?.titleSmall),
+                hint: Text(
+                  "Type Your Model Name",
+                  style: context.textTheme?.bodyMedium,
                 ),
-                style: context.textTheme?.titleSmall,
-                onChanged: (value) {
-                  setState(() {});
-                },
+                suffixIcon: nameController.text.isNotEmpty
+                    ? IconButton(
+                        onPressed: () {
+                          nameController.clear();
+                        },
+                        icon: Icon(Icons.cancel),
+                        color: context.primaryTextColor,
+                      )
+                    : null,
               ),
+              style: context.textTheme?.titleSmall,
+              onChanged: (value) {
+                setState(() {});
+              },
             ),
-            Spacer(),
-          ],
-        ),
+          ),
+          Spacer(),
+        ],
       ),
     );
   }

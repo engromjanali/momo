@@ -86,7 +86,7 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
 
       // নতুন route তে subscribe
       _currentRoute = route;
-      NavigationService.routeObserver.subscribe(this, _currentRoute!);
+      // NavigationService.routeObserver.subscribe(this, _currentRoute!);
     }
   }
 

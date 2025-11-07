@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:momo/core/constants/colors.dart';
 import 'package:momo/core/constants/default_values.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
-import 'package:momo/core/functions/f_is_null.dart';
 import 'package:momo/core/services/navigation_service.dart';
-import 'package:momo/core/widgets/image/m_image_payload.dart';
-import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/features/explore/data/model/m_explore.dart';
 import 'package:momo/features/explore/view/s_get_this_pack.dart';
 import 'package:momo/features/explore/view/s_see_all.dart';
 import 'package:momo/features/explore/widget/w_item.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
+import 'package:momo/features/oneshot/view/s_photo_with_prompt.dart';
 
 class WSection extends StatelessWidget {
   final MExplore? mExplore;
@@ -41,7 +38,11 @@ class WSection extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  SSeeAll(isExplore: true, explore: mExplore).push();
+                  SSeeAll(
+                    isExplore: isExplore,
+                    explore: mExplore,
+                    oneShot: mOneshot,
+                  ).push();
                 },
                 child: Text("See All", style: context.textTheme?.bodyLarge),
               ),
@@ -61,7 +62,13 @@ class WSection extends StatelessWidget {
                 padding: const EdgeInsets.all(5.0),
                 child: WItem(
                   onTap: () {
-                    SGetThisPack(eItem: mExplore?.items?[index],).push();
+                    if (isExplore) {
+                      SGetThisPack(eItem: mExplore?.items?[index]).push();
+                    } else {
+                      SPhotosWithPrompt(
+                        osItem: mOneshot?.items?[index] ?? OItem(),
+                      ).push();
+                    }
                   },
                   oItem: mOneshot?.items?[index],
                   eItem: mExplore?.items?[index],
