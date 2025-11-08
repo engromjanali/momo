@@ -58,31 +58,20 @@ class OpenURLs {
           if (await canLaunchUrl(uri)) {
             await launchUrl(
               uri,
-              mode: (type == OpenType.url)
-                  ? LaunchMode.externalApplication
-                  : LaunchMode.platformDefault,
+              mode: (type == OpenType.url) ? LaunchMode.externalApplication : LaunchMode.platformDefault,
             );
           } else {
             errorPrint('🐞 Could not launch $type for $value 🐛');
-            showSnackBar(
-              '🐞 Could not launch $type for $value 🐛',
-              snackBarType: SnackBarType.warning,
-            );
+            showSnackBar('🐞 Could not launch $type for $value 🐛', snackBarType: SnackBarType.warning);
           }
         } catch (e) {
           errorPrint('🐞 Could not launch $type for $value 🐛');
-          showSnackBar(
-            '🐞 Could not launch $type for $value 🐛',
-            snackBarType: SnackBarType.warning,
-          );
+          showSnackBar('🐞 Could not launch $type for $value 🐛', snackBarType: SnackBarType.warning);
         }
       }
     } catch (e) {
       errorPrint('🐞 Could not launch $type for $value 🐛');
-      showSnackBar(
-        '🐞 Could not launch $type for $value 🐛',
-        snackBarType: SnackBarType.warning,
-      );
+      showSnackBar('🐞 Could not launch $type for $value 🐛', snackBarType: SnackBarType.warning);
     }
   }
 }

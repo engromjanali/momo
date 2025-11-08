@@ -17,4 +17,9 @@ class PDefaultValues {
   static const int passwordMinLength = 8;
   static const googleGroupLink =
       "https://groups.google.com/u/0/g/apptestingservicex-xxx";
+  static const instagramLink = "https://www.instagram.com/engromjanali";
+  static const tiktokLink = "https://www.tiktok.com/404?fromUrl=/engromjanali";
+  static const facebookLink =
+      "https://www.tiktok.com/404?fromUrl=/engromjanali";
+  static const mailLink = "engromjanali@gmail.com";
 }

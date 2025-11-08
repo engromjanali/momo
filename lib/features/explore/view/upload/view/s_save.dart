@@ -101,7 +101,7 @@ class _SSaveState extends State<SSave> {
 
             // filter list  as list-view
             SizedBox(
-              height: 120,
+              height: 120.w,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [

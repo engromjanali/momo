@@ -69,16 +69,7 @@ class _SeeAllPageState extends State<SSeeAll> {
                       // with prompt
                       if (oitem?.prompt?.isNotEmpty ?? false) {
                         ///Get.to(() => PhotosWithPrompt(osItem: osItem,));
-                        switch (oitem?.imageBehaildText?.length) {
-                          case 1:
-                            // navigate to prompt with one image
-                            SPhotosWithPrompt(osItem: oitem ?? OItem()).push();
-                            return;
-                          case 2:
-                            // navigate to prompt with two image
-                            SPhotosWithPrompt(osItem: oitem ?? OItem()).push();
-                            return;
-                        }
+                        
                       }
                       // without prompt
                       else {

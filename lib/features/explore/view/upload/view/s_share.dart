@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
+import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/functions/f_snackbar.dart';
 import 'package:momo/core/services/navigation_service.dart';
+import 'package:momo/core/widgets/w_cancle_button.dart';
 import 'package:momo/core/widgets/w_purchese.dart';
 import 'package:momo/features/s_home.dart';
 import 'package:momo/gen/assets.gen.dart';
@@ -24,10 +27,12 @@ class _SShareState extends State<SShare> {
     Assets.images.good.a5.path,
   ];
 
-  List<Widget> widgetList = [
-    FaIcon(FontAwesomeIcons.drawPolygon, color: Colors.white, size: 20),
-    CustomIcon(path: Assets.icons.dashicons, size: 20, color: Colors.white),
-    CustomIcon(path: Assets.icons.afterBefore, size: 20, color: Colors.red),
+  List<String> widgetList = [
+    Assets.social.save.path,
+    Assets.social.ws.path,
+    Assets.social.fb.path,
+    Assets.social.insta.path,
+    Assets.social.tktok.path,
   ];
 
   int selectedIndex = 0;
@@ -39,9 +44,8 @@ class _SShareState extends State<SShare> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        leading: IconButton(
-          icon: Icon(Icons.cancel_outlined),
-          onPressed: () {
+        leading: WCancleButton(
+          onTap: () {
             Navigation.pop();
           },
         ),
@@ -78,7 +82,7 @@ class _SShareState extends State<SShare> {
 
             // filter list  as list-view
             SizedBox(
-              height: 120,
+              height: 120.w,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -90,7 +94,7 @@ class _SShareState extends State<SShare> {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (_, index) {
                             return SizedBox(
-                              width: 110,
+                              width: 110.w,
                               child: _getFilterWidget(
                                 ontap: () {
                                   setState(() {
@@ -114,33 +118,32 @@ class _SShareState extends State<SShare> {
 
             // filter list  as list-view
             SizedBox(
-              height: 120,
+              height: 120.w,
               child: StatefulBuilder(
                 builder: (context, setLocalState) {
-                  return Expanded(
-                    child: ListView.builder(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      itemCount: widgetList.length,
-                      scrollDirection: Axis.horizontal,
+                  return ListView.builder(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    itemCount: widgetList.length,
+                    scrollDirection: Axis.horizontal,
 
-                      itemBuilder: (_, index) {
-                        return Center(
-                          child: SizedBox(
-                            width: 60,
-                            height: 60,
-                            child: _getShareWidget(
-                              child: widgetList[index],
-                              ontap: () {
-                                showSnackBar(
-                                  title: "Info",
-                                  "We Are Working about...\nstay with us!",
-                                );
-                              },
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+                    itemBuilder: (_, index) {
+                      return Center(
+                        child: SizedBox(
+                          width: 60.w,
+                          height: 60.w,
+                          child: WShareIcon(
+                            path: widgetList[index],
+                            size: 30,
+                            onTap: () {
+                              showSnackBar(
+                                title: "Info",
+                                "We Are Working about...\nstay with us!",
+                              );
+                            },
+                          ).pAll(value: 5),
+                        ),
+                      );
+                    },
                   );
                 },
               ),
@@ -204,48 +207,24 @@ class _SShareState extends State<SShare> {
       ),
     );
   }
-
-  Widget _getShareWidget({required Function() ontap, required Widget child}) {
-    return GestureDetector(
-      onTap: ontap,
-      child: Container(
-        margin: EdgeInsets.all(1),
-        child: Container(
-          decoration: BoxDecoration(
-            color: context.cardColor,
-            border: Border.all(color: context.cardColor),
-            shape: BoxShape.circle,
-          ),
-          margin: EdgeInsets.all(2),
-          child: Center(child: child),
-        ),
-      ),
-    );
-  }
 }
 
-class CustomIcon extends StatelessWidget {
+class WShareIcon extends StatelessWidget {
   final String path;
   final double size;
-  final Color color;
-  const CustomIcon({
+  final Function() onTap;
+  const WShareIcon({
     super.key,
     required this.path,
-    this.size = 20,
-    this.color = Colors.grey,
+    required this.size,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    bool isSvg = path.contains(".svg");
-    return isSvg
-        ? ClipOval(
-            child: SvgPicture.asset(
-              path,
-              height: size,
-              colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-            ),
-          )
-        : Image.asset(path, height: size, color: color);
+    return GestureDetector(
+      onTap: onTap,
+      child: Image.asset(path, height: size),
+    );
   }
 }

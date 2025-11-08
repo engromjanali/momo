@@ -8,6 +8,7 @@ import 'package:momo/features/explore/view/s_get_this_pack.dart';
 import 'package:momo/features/explore/view/s_see_all.dart';
 import 'package:momo/features/explore/widget/w_item.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
+import 'package:momo/features/oneshot/function/f_upload_navigation.dart';
 import 'package:momo/features/oneshot/view/s_photo_with_prompt.dart';
 
 class WSection extends StatelessWidget {
@@ -65,9 +66,7 @@ class WSection extends StatelessWidget {
                     if (isExplore) {
                       SGetThisPack(eItem: mExplore?.items?[index]).push();
                     } else {
-                      SPhotosWithPrompt(
-                        osItem: mOneshot?.items?[index] ?? OItem(),
-                      ).push();
+                      navigateToOSUploadScreen(mOneshot?.items?[index]);
                     }
                   },
                   oItem: mOneshot?.items?[index],

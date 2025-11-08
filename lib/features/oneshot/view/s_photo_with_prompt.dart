@@ -1,13 +1,20 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:momo/core/constants/colors.dart';
 import 'package:momo/core/constants/default_values.dart';
+import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
+import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/functions/f_is_null.dart';
 import 'package:momo/core/services/image_picker_services.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
+import 'package:momo/core/widgets/w_cancle_button.dart';
+import 'package:momo/core/widgets/w_card.dart';
+import 'package:momo/core/widgets/w_container.dart';
+import 'package:momo/core/widgets/w_purchese.dart';
 import 'package:momo/features/explore/view/upload/data/model/m_selected_image.dart';
 import 'package:momo/features/explore/view/upload/widget/w_selected_image.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
@@ -44,15 +51,15 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
       bottomNavigationBar: WBottomNavButton(
         label: "Continue * 10",
         ontap: () {
-          // Get.to(() => PurcheseScreen());
+          WPurchese().push();
         },
         isEnabled: !pickedImageList.contains(null),
-      ),
+      ).pAll(),
       body: Column(
         children: [
           // top area
           Expanded(
-            flex: 40,
+            flex: 50,
             child: Stack(
               children: [
                 // image
@@ -73,7 +80,6 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Column(
-                      spacing: 16,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -82,7 +88,7 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
                         ),
                         Text(
                           widget.osItem.subTitle ?? PDefaultValues.noName,
-                          style: context.textTheme?.bodySmall,
+                          style: context.textTheme?.bodyMedium,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -95,15 +101,10 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
                   top: 10,
                   left: 20,
                   child: SafeArea(
-                    child: GestureDetector(
+                    child: WCancleButton(
                       onTap: () {
                         Navigation.pop();
                       },
-                      child: CircleAvatar(
-                        radius: 15,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.close),
-                      ),
                     ),
                   ),
                 ),
@@ -113,54 +114,28 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
 
           // down area
           Expanded(
-            flex: 60,
+            flex: 50,
             child: Container(
-              padding: EdgeInsets.all(10),
               color: Colors.black,
               child: Column(
+                spacing: PTheme.spaceY,
                 children: [
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.all(5),
-                      padding: EdgeInsets.only(
-                        left: 10,
-                        right: 10,
-                        top: 20,
-                        bottom: 10,
-                      ),
                       decoration: BoxDecoration(
                         color: context.cardColor,
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Enter Prompt",
-                            style: context.textTheme?.titleSmall,
-                          ),
-                          Expanded(
-                            child: TextField(
-                              controller: promptController,
-                              decoration: InputDecoration(
-                                hintText: "Write Your Prompt Here...",
-                                hintStyle: context.textTheme?.bodyMedium,
-
-                                border: InputBorder.none,
-                              ),
-                              style: context.textTheme?.titleMedium,
-                              expands: true,
-                              scrollPhysics: ClampingScrollPhysics(),
-                              maxLines: null,
-                            ),
-                          ),
-                        ],
+                      child: WPromptField(
+                        title: "Enter Prompt",
+                        promptController: promptController,
+                        isExpanded: true,
                       ),
                     ),
                   ),
-
                   Expanded(
                     child: Row(
+                      spacing: PTheme.spaceX,
                       children: (widget.osItem.imageBehaildText ?? []).map((
                         behindText,
                       ) {
@@ -199,11 +174,60 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
                   ),
                 ],
               ),
-            ),
+            ).pAll(),
           ),
-          SizedBox(height: 100),
+          SizedBox(height: 100.h),
         ],
       ),
+    );
+  }
+}
+
+class WPromptField extends StatelessWidget {
+  final bool isExpanded;
+  final String title;
+  final TextEditingController promptController;
+  const WPromptField({
+    super.key,
+    this.isExpanded = false,
+    required this.title,
+    required this.promptController,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return WCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title, style: context.textTheme?.titleSmall).pB(),
+          Expanded(
+            child: TextField(
+              controller: promptController,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.transparent,
+                hintText: "Write Your Prompt Here...",
+                hintStyle: context.textTheme?.bodyMedium,
+                contentPadding: EdgeInsets.all(0),
+                border: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+              ),
+
+              style: context.textTheme?.bodyMedium,
+              textAlign: TextAlign
+                  .start, // Align text horizontally to the start (left)
+              textAlignVertical:
+                  TextAlignVertical.top, // Align text vertically to the top
+              expands: isExpanded,
+              scrollPhysics: const ClampingScrollPhysics(),
+              maxLines: isExpanded ? null : 1,
+            ),
+          ),
+        ],
+      ).pAll(),
     );
   }
 }

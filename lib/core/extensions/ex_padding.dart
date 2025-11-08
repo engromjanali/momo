@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/services/navigation_service.dart';
 
-
 /// 📏 gapY / gapX
 /// Shorthand widgets for vertical (`gapY`) and horizontal (`gapX`) spacing.
 /// 🪄 Makes layout code cleaner.
@@ -21,35 +20,52 @@ Widget gapX(double pt) => SizedBox(width: pt.w);
 
 extension PaddingExtension on Widget {
   Widget pAll({double? value}) => Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: value?.w ?? PTheme.paddingX,
-          vertical: value?.h ?? PTheme.paddingY),
-      child: this);
+    padding: EdgeInsets.symmetric(
+      horizontal: value?.w ?? PTheme.paddingX,
+      vertical: value?.h ?? PTheme.paddingY,
+    ),
+    child: this,
+  );
   Widget pH({double? value}) => Padding(
-      padding: EdgeInsets.symmetric(horizontal: value?.w ?? PTheme.spaceX),
-      child: this);
+    padding: EdgeInsets.symmetric(horizontal: value?.w ?? PTheme.spaceX),
+    child: this,
+  );
   Widget pV({double? value}) => Padding(
-      padding: EdgeInsets.symmetric(vertical: value?.h ?? PTheme.spaceX),
-      child: this);
+    padding: EdgeInsets.symmetric(vertical: value?.h ?? PTheme.spaceX),
+    child: this,
+  );
   Widget pT({double? value}) => Padding(
-      padding: EdgeInsets.only(top: value?.h ?? PTheme.spaceY), child: this);
+    padding: EdgeInsets.only(top: value?.h ?? PTheme.spaceY),
+    child: this,
+  );
   Widget pB({double? value}) => Padding(
-      padding: EdgeInsets.only(bottom: value?.h ?? PTheme.spaceX), child: this);
+    padding: EdgeInsets.only(bottom: value?.h ?? PTheme.spaceX),
+    child: this,
+  );
   Widget pL({double? value}) => Padding(
-      padding: EdgeInsets.only(left: value?.w ?? PTheme.spaceX), child: this);
+    padding: EdgeInsets.only(left: value?.w ?? PTheme.spaceX),
+    child: this,
+  );
   Widget get paddingExceptBottom => Padding(
-      padding: EdgeInsets.only(
-          top: PTheme.paddingY, right: PTheme.paddingX, left: PTheme.paddingX),
-      child: this);
+    padding: EdgeInsets.only(
+      top: PTheme.paddingY,
+      right: PTheme.paddingX,
+      left: PTheme.paddingX,
+    ),
+    child: this,
+  );
   Widget pR({double? value}) => Padding(
-      padding: EdgeInsets.only(right: value?.w ?? PTheme.spaceX), child: this);
+    padding: EdgeInsets.only(right: value?.w ?? PTheme.spaceX),
+    child: this,
+  );
   Widget pDivider({Color? color}) => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          this,
-          Divider(
-              color: color ??
-                  Theme.of(NavigationService.currentContext).dividerColor)
-        ],
-      );
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      this,
+      Divider(
+        height: 1.h,
+        color: color ?? Theme.of(NavigationService.currentContext).dividerColor,
+      ),
+    ],
+  );
 }

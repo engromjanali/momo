@@ -19,10 +19,7 @@ class COneShot extends CBase {
           subTitle: "sub-item-2",
           prompt: "make the weather sunny-2.",
           image: "mo image",
-          imageBehaildText: [
-            "select your image-2",
-            "select your husbend image-2",
-          ],
+          imageBehaildText: ["select your husbend image-2"],
         ),
       ],
     ),

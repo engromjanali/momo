@@ -4,24 +4,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/functions/f_is_null.dart';
 import 'package:momo/core/functions/f_printer.dart';
+import 'package:momo/core/widgets/w_card.dart';
 import 'package:momo/features/explore/view/upload/data/model/m_selected_image.dart';
 
 class WSelectedImage extends StatelessWidget {
   final Function() onTap;
   final MSImage? msImage;
   final String? label;
-  const WSelectedImage({super.key, required this.onTap, required this.msImage, this.label});
+  const WSelectedImage({
+    super.key,
+    required this.onTap,
+    required this.msImage,
+    this.label,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        color: Colors.white10,
-        borderRadius: BorderRadius.circular(10),
-
-        // image: DecorationImage(image: ,fit: BoxFit.fill,))
-      ),
+    return WCard(
       child: !isNull(msImage?.image)
           ?
             // show image

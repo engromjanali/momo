@@ -7,6 +7,7 @@ import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
+import 'package:momo/core/widgets/w_cancle_button.dart';
 import 'package:momo/features/explore/data/model/m_explore.dart';
 import 'package:momo/features/explore/view/upload/view/s_upload.dart';
 import 'package:momo/gen/assets.gen.dart';
@@ -50,7 +51,7 @@ class _GetThisPackState extends State<SGetThisPack> {
 
   @override
   Widget build(BuildContext context) {
-    double topSectionHeight = 400.h;
+    double topSectionHeight = 400;
     return Scaffold(
       body: Stack(
         children: [
@@ -58,7 +59,7 @@ class _GetThisPackState extends State<SGetThisPack> {
           Column(
             children: [
               SizedBox(
-                height: topSectionHeight,
+                height: topSectionHeight.h,
                 child: Opacity(
                   opacity: 1.0 - _opacity,
                   child: Transform.scale(
@@ -68,7 +69,7 @@ class _GetThisPackState extends State<SGetThisPack> {
                       children: [
                         Image.asset(
                           Assets.images.x.path, // Replace with your image path
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fill,
                         ),
                         Container(
                           decoration: BoxDecoration(gradient: PColors.imageFG),
@@ -112,134 +113,136 @@ class _GetThisPackState extends State<SGetThisPack> {
                 SUpload(eItem: widget.eItem).pushReplacement();
               },
             ).pAll(),
+
             appBar: AppBar(
               scrolledUnderElevation: 0,
               elevation: 0,
-              backgroundColor: Colors.black.withAlpha(_opacity == 1 ? 255 : 0),
+              backgroundColor: Colors.black.withAlpha(
+                _opacity == 1 ? 255.h.ceil() : 0,
+              ),
               foregroundColor: Colors.white,
-              leading: IconButton(
-                onPressed: () {
+              leading: WCancleButton(
+                onTap: () {
                   Navigation.pop();
                 },
-                icon: Icon(Icons.cancel, size: 35),
               ),
               centerTitle: true,
               title: Opacity(opacity: _opacity, child: Text("Suit")),
             ),
-
-            body: CustomScrollView(
-              physics: BouncingScrollPhysics(),
-              controller: _scrollController,
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Column(
-                    children: [
-                      // to show top view.
-                      gapY(topSectionHeight),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(PTheme.boarderRadius),
-                            topRight: Radius.circular(PTheme.boarderRadius),
+            body: Container(
+              child: CustomScrollView(
+                physics: BouncingScrollPhysics(),
+                controller: _scrollController,
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        // to show top view.
+                        gapY(topSectionHeight),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(PTheme.boarderRadius),
+                              topRight: Radius.circular(PTheme.boarderRadius),
+                            ),
                           ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  'What\'s Inside',
-                                  style: context.textTheme?.titleSmall,
-                                ),
-                                Spacer(),
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 4,
-                                    horizontal: 4,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    'What\'s Inside',
+                                    style: context.textTheme?.titleSmall,
                                   ),
-                                  decoration: BoxDecoration(
-                                    color: context.primaryTextColor,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-
-                                  child: Text(
-                                    "SNEAK PEEK",
-                                    style: context.textTheme?.titleSmall
-                                        ?.copyWith(
-                                          color: context.backgroundColor,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              widget.eItem?.details ?? PDefaultValues.noName,
-                              style: context.textTheme?.bodySmall,
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              'Styles & Avatars',
-                              style: context.textTheme?.titleSmall,
-                            ),
-
-                            ListView.builder(
-                              padding: EdgeInsets.symmetric(vertical: 20),
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount:
-                                  // widget.isExplore
-                                  //     ?
-                                  widget.eItem?.spacificaton?.length ?? 0,
-                              // : widget.oneShotItem!.spacificaton.length,
-                              itemBuilder: (_, index) {
-                                return Row(
-                                  spacing: 10,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(
-                                      Icons.circle,
-                                      color: context.secondaryTextColor,
-                                      size: context
-                                          .textTheme
-                                          ?.bodySmall
-                                          ?.fontSize,
+                                  Spacer(),
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 4,
+                                      horizontal: 4,
                                     ),
-                                    Expanded(
-                                      child: Text(
-                                        widget.eItem?.spacificaton?[index] ??
-                                            PDefaultValues.noName,
-                                        style: context.textTheme?.bodySmall,
+                                    decoration: BoxDecoration(
+                                      color: context.primaryTextColor,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+
+                                    child: Text(
+                                      "SNEAK PEEK",
+                                      style: context.textTheme?.titleSmall
+                                          ?.copyWith(
+                                            color: context.backgroundColor,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                widget.eItem?.details ?? PDefaultValues.noName,
+                                style: context.textTheme?.bodySmall,
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                'Styles & Avatars',
+                                style: context.textTheme?.titleSmall,
+                              ),
+
+                              ListView.builder(
+                                padding: EdgeInsets.symmetric(vertical: 20),
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount:
+                                    // widget.isExplore
+                                    //     ?
+                                    widget.eItem?.spacificaton?.length ?? 0,
+                                // : widget.oneShotItem!.spacificaton.length,
+                                itemBuilder: (_, index) {
+                                  return Row(
+                                    spacing: 10,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.circle,
+                                        color: context.secondaryTextColor,
+                                        size: context
+                                            .textTheme
+                                            ?.bodySmall
+                                            ?.fontSize,
                                       ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ),
+                                      Expanded(
+                                        child: Text(
+                                          widget.eItem?.spacificaton?[index] ??
+                                              PDefaultValues.noName,
+                                          style: context.textTheme?.bodySmall,
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ),
 
-                            Text(
-                              'Example Outputs',
-                              style: context.textTheme?.titleSmall,
-                            ),
-                          ],
-                        ).pAll(),
-                      ),
-                    ],
+                              Text(
+                                'Example Outputs',
+                                style: context.textTheme?.titleSmall,
+                              ),
+                            ],
+                          ).pAll(),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                // sample grid view
-                SliverGrid.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1 / 1.3,
-                  ),
-                  itemCount: widget.eItem?.images?.length ?? 0,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
+                  // sample grid view
+                  SliverGrid.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1 / 1.3,
+                      mainAxisSpacing: PTheme.spaceX,
+                      crossAxisSpacing: PTheme.spaceX,
+                    ),
+                    itemCount: widget.eItem?.images?.length ?? 0,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ClipRRect(
                         borderRadius: BorderRadiusGeometry.circular(10),
                         child: Stack(
                           fit: StackFit.expand,
@@ -257,13 +260,13 @@ class _GetThisPackState extends State<SGetThisPack> {
                             ),
                           ],
                         ),
-                      ),
-                    );
-                  },
-                ),
+                      );
+                    },
+                  ),
 
-                SliverToBoxAdapter(child: SizedBox(height: 100)),
-              ],
+                  SliverToBoxAdapter(child: SizedBox(height: 100)),
+                ],
+              ),
             ),
           ),
 

@@ -8,8 +8,6 @@ import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/functions/f_is_null.dart';
 import 'package:momo/core/functions/f_snackbar.dart';
 import 'package:momo/core/services/navigation_service.dart';
-import 'package:momo/core/widgets/image/m_image_payload.dart';
-import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
 import 'package:momo/core/widgets/w_cancle_button.dart';
 import 'package:momo/gen/assets.gen.dart';
@@ -38,83 +36,83 @@ class _PurcheseScreenState extends State<WPurchese> {
           },
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image.asset(
-            Assets.images.ratingIcon.path,
-            height: 170.h,
-            width: 170.w,
-          ),
-          Text(
-            "Get Full Access.",
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              Assets.images.ratingIcon.path,
+              height: 170.w,
+              width: 170.w,
             ),
-            textAlign: TextAlign.center,
-          ).pV(value: 20),
-          WProPlain(
-            onTap: () {
-              setState(() {
-                selectedPlain = 1;
-              });
-            },
-            title: "7-Day Full Access",
-            subTitle: "Then BDT 1,400/week",
-            amount: 950,
-            isSelected: selectedPlain == 1,
-          ).pB(value: 20),
-          WProPlain(
-            onTap: () {
-              setState(() {
-                selectedPlain = 2;
-              });
-            },
-            title: "Yearly Access",
-            amount: 5100,
-            isSelected: selectedPlain == 2,
-            offerText: 'SAVE 94%',
-          ),
-
-          Spacer(),
-          Row(
-            children: [
-              Spacer(),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _WItemTile(icon: Icons.image, label: "Ultra Realistic HD"),
-                  _WItemTile(icon: Icons.lock, label: "Unlock Ai Photos"),
-                  _WItemTile(
-                    icon: Icons.person,
-                    label: "Create One Ai Profile",
-                  ),
-                  _WItemTile(icon: Icons.key, label: "Access to All Style"),
-                ],
-              ),
-              Spacer(),
-            ],
-          ),
-          Spacer(),
-          WBottomNavButton(
-            label: "Purchase Now",
-            ontap: () {
-              showSnackBar("Thank you for having with us!");
-            },
-          ).pB(value: 17),
-          Align(
-            alignment: Alignment.center,
-            child: Text(
-              "Auto-renews at Bdt 1400/week. No Commitment.\nCancel anytime.",
-              style: TextStyle(color: Colors.white70),
+            Text(
+              "Get Full Access.",
+              style: context.textTheme?.headlineSmall,
               textAlign: TextAlign.center,
-            ).pB(value: 20),
-          ),
-        ],
-      ).pAll(),
+            ).pV(value: 20),
+            Column(
+              children: [
+                WProPlain(
+                  onTap: () {
+                    setState(() {
+                      selectedPlain = 1;
+                    });
+                  },
+                  title: "7-Day Full Access",
+                  subTitle: "Then BDT 1,400/week",
+                  amount: 950,
+                  isSelected: selectedPlain == 1,
+                ).pB(value: 20),
+                WProPlain(
+                  onTap: () {
+                    setState(() {
+                      selectedPlain = 2;
+                    });
+                  },
+                  title: "Yearly Access",
+                  amount: 5100,
+                  isSelected: selectedPlain == 2,
+                  offerText: 'SAVE 94%',
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _WItemTile(icon: Icons.image, label: "Ultra Realistic HD"),
+                    _WItemTile(icon: Icons.lock, label: "Unlock Ai Photos"),
+                    _WItemTile(
+                      icon: Icons.person,
+                      label: "Create One Ai Profile",
+                    ),
+                    _WItemTile(icon: Icons.key, label: "Access to All Style"),
+                  ],
+                ),
+                Spacer(),
+              ],
+            ).pV(value: 50),
+
+            WBottomNavButton(
+              label: "Purchase Now",
+              ontap: () {
+                showSnackBar("Thank you for having with us!");
+              },
+            ).pB(value: 17),
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                "Auto-renews at Bdt 1400/week. No Commitment.\nCancel anytime.",
+                style: context.textTheme?.bodyMedium,
+                textAlign: TextAlign.center,
+              ).pB(value: 20),
+            ),
+          ],
+        ).pAll(),
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:momo/core/constants/all_enums.dart';
+import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/services/navigation_service.dart';
@@ -73,7 +74,7 @@ class _GenderSelectionState extends State<SGenderSelection> {
           Spacer(),
           SizedBox(height: 100),
         ],
-      ),
+      ).pAll(),
     );
   }
 }
@@ -101,9 +102,9 @@ class WGenderSelectionButton extends StatelessWidget {
           border: BoxBorder.all(
             color: isSelected
                 ? context.primaryTextColor ?? Colors.white
-                : context.secondaryTextColor ?? Colors.grey,
+                : context.backgroundColor ?? Colors.black,
           ),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(PTheme.boarderRadius),
         ),
         child: Center(
           child: Text(

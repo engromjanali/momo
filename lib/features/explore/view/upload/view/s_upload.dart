@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/functions/f_is_null.dart';
@@ -122,7 +124,7 @@ class _SUploadState extends State<SUpload> {
             Text(
               "Pick 8-12 Photos of yourself",
               style: context.textTheme?.titleLarge,
-            ),
+            ).pB(value: 40),
 
             // good photos
             WSectionWrapper(
@@ -146,13 +148,15 @@ class _SUploadState extends State<SUpload> {
               title: !isNull(selectedImageList) ? "Your Photos" : "",
               child: Container(
                 color: context.backgroundColor,
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                padding: EdgeInsets.symmetric(vertical: 10),
                 child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   padding: EdgeInsets.all(0),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     childAspectRatio: 1,
+                    mainAxisSpacing: PTheme.spaceX,
+                    crossAxisSpacing: PTheme.spaceX,
                   ),
                   itemCount: selectedImageList.isEmpty
                       ? 0
@@ -188,7 +192,7 @@ class _SUploadState extends State<SUpload> {
             // gap for bottom nav bar
             gapY(100),
           ],
-        ),
+        ).pAll(),
       ),
     );
   }

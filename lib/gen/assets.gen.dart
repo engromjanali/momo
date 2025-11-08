@@ -190,6 +190,28 @@ class $AssetsLogoGen {
   ];
 }
 
+class $AssetsSocialGen {
+  const $AssetsSocialGen();
+
+  /// File path: assets/social/fb.png
+  AssetGenImage get fb => const AssetGenImage('assets/social/fb.png');
+
+  /// File path: assets/social/insta.png
+  AssetGenImage get insta => const AssetGenImage('assets/social/insta.png');
+
+  /// File path: assets/social/save.png
+  AssetGenImage get save => const AssetGenImage('assets/social/save.png');
+
+  /// File path: assets/social/tktok.png
+  AssetGenImage get tktok => const AssetGenImage('assets/social/tktok.png');
+
+  /// File path: assets/social/ws.png
+  AssetGenImage get ws => const AssetGenImage('assets/social/ws.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [fb, insta, save, tktok, ws];
+}
+
 class $AssetsImagesBadGen {
   const $AssetsImagesBadGen();
 
@@ -250,6 +272,7 @@ class Assets {
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLogoGen logo = $AssetsLogoGen();
+  static const $AssetsSocialGen social = $AssetsSocialGen();
 }
 
 class AssetGenImage {
