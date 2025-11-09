@@ -21,6 +21,21 @@ class COneShot extends CBase {
           image: "mo image",
           imageBehaildText: ["select your husbend image-2"],
         ),
+        OItem(
+          title: "item 3",
+          subTitle: "sub-item-2",
+          image: "mo image",
+          imageBehaildText: ["select your husbend image-2"],
+        ),
+        OItem(
+          title: "item 3",
+          subTitle: "sub-item-2",
+          image: "mo image",
+          imageBehaildText: [
+            "select your husbend image-2",
+            "select your husbend image-2",
+          ],
+        ),
       ],
     ),
   ];

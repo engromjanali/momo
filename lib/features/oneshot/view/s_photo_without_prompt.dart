@@ -1,20 +1,23 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:momo/core/constants/colors.dart';
 import 'package:momo/core/constants/default_values.dart';
+import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/functions/f_is_null.dart';
-import 'package:momo/core/services/image_picker_services.dart';
+import 'package:momo/core/functions/f_pick_single_image.dart';
+import 'package:momo/core/functions/f_printer.dart';
+import 'package:momo/core/functions/f_snackbar.dart';
 import 'package:momo/core/services/navigation_service.dart';
+import 'package:momo/core/widgets/image/m_image_payload.dart';
 import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
-import 'package:momo/features/explore/view/upload/data/data_source/selected_images.dart';
-import 'package:momo/features/explore/view/upload/data/model/m_selected_image.dart';
-import 'package:momo/features/explore/view/upload/widget/w_selected_image.dart';
+import 'package:momo/core/widgets/w_pop_button.dart';
+import 'package:momo/core/widgets/w_purchese.dart';
+import 'package:momo/features/explore/data/selected_images.dart';
+import 'package:momo/features/explore/data/model/m_selected_image.dart';
+import 'package:momo/features/explore/widget/w_selected_image.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
-import 'package:momo/features/oneshot/widgets/w_dialog.dart';
 
 class SPhotosWithOutPrompt extends StatefulWidget {
   final OItem oItem;
@@ -25,13 +28,8 @@ class SPhotosWithOutPrompt extends StatefulWidget {
 }
 
 class _PhotosWithOutPromptState extends State<SPhotosWithOutPrompt> {
-  List<File?> pickedImageList = [];
-
   @override
   void initState() {
-    widget.oItem.imageBehaildText?.map((x) {
-      pickedImageList.add(null);
-    }).toList();
     // TODO: implement initState
     super.initState();
   }
@@ -44,10 +42,12 @@ class _PhotosWithOutPromptState extends State<SPhotosWithOutPrompt> {
       bottomNavigationBar: WBottomNavButton(
         label: "Continue * 10",
         ontap: () {
-          // Get.to(() => PurcheseScreen());
+          WPurchese().push();
         },
-        isEnabled: !pickedImageList.contains(null),
-      ),
+        isEnabled:
+            selectedImageList.isNotEmpty &&
+            selectedImageList.any((e) => e.isGoodImage ?? false),
+      ).pAll(),
       body: Column(
         children: [
           // top area
@@ -56,7 +56,12 @@ class _PhotosWithOutPromptState extends State<SPhotosWithOutPrompt> {
             child: Stack(
               children: [
                 // image
-                SizedBox.expand(child: WImage(widget.oItem.image)),
+                SizedBox.expand(
+                  child: WImage(
+                    widget.oItem.image,
+                    payload: MImagePayload(fit: BoxFit.cover),
+                  ),
+                ),
                 // top color shadow
                 Positioned(
                   child: Container(
@@ -89,20 +94,11 @@ class _PhotosWithOutPromptState extends State<SPhotosWithOutPrompt> {
                   ),
                 ),
                 // close icon
-                Positioned(
-                  top: 10,
-                  left: 20,
-                  child: SafeArea(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigation.pop();
-                      },
-                      child: CircleAvatar(
-                        radius: 15,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.close),
-                      ),
-                    ),
+                SafeArea(
+                  child: WPButton(
+                    onTap: () {
+                      Navigation.pop();
+                    },
                   ),
                 ),
               ],
@@ -112,52 +108,44 @@ class _PhotosWithOutPromptState extends State<SPhotosWithOutPrompt> {
           // down area
           Expanded(
             flex: 40,
-            child: Container(
-              padding: EdgeInsets.all(10),
-              color: Colors.black,
-              child: Row(
-                children: List.generate(
-                  widget.oItem.imageBehaildText?.length ?? 0,
-                  (index) {
-                    return Expanded(
-                      child: WSelectedImage(
-                        label: widget.oItem.imageBehaildText?[0],
-                        onTap: () async {
-                          if (!isNull(selectedImageList[index])) {
-                            // remove image
-                            setState(() {
-                              pickedImageList[index] = null;
-                            });
-                          } else {
-                            ImageSource? res = await WISDialog().push();
-                            if (!isNull(res)) {
-                              XFile? pickedImageFile = await SvImagePicker()
-                                  .pickSingleImage(
-                                    choseFrom: res ?? ImageSource.gallery,
-                                  );
-                              if (!isNull(pickedImageFile)) {
-                                setState(() {
-                                  pickedImageList[index] = File(
-                                    pickedImageFile?.path ?? "No Path",
-                                  );
-                                });
-                              }
+            child: Row(
+              spacing: PTheme.spaceX,
+              children: List.generate(
+                widget.oItem.imageBehaildText?.length ?? 0,
+                (index) {
+                  return Expanded(
+                    child: WSelectedImage(
+                      label: widget.oItem.imageBehaildText?[index],
+                      onTap: () async {
+                        if (index < selectedImageList.length) {
+                          selectedImageList.removeAt(index);
+                          setState(() {});
+                        } else {
+                          try {
+                            MSImage? msImage = await pickSingleImage();
+                            if (!isNull(msImage)) {
+                              setState(() {
+                                selectedImageList.add(msImage!);
+                              });
                             }
+                          } catch (e) {
+                            showSnackBar("Sonthing Want Wrong!");
+                            errorPrint(e);
                           }
-                        },
+                        }
+                      },
 
-                        msImage: MSImage(
-                          image: pickedImageList[index]?.path ?? "No Path",
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                      msImage: index >= selectedImageList.length
+                          ? null
+                          : selectedImageList[index],
+                    ),
+                  );
+                },
               ),
-            ),
+            ).pAll(),
           ),
 
-          gapY(100),
+          gapY(80),
         ],
       ),
     );

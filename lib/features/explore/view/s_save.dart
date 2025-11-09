@@ -10,7 +10,7 @@ import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/image/m_image_payload.dart';
 import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
-import 'package:momo/features/explore/view/upload/view/s_share.dart';
+import 'package:momo/features/explore/view/s_share.dart';
 import 'package:momo/gen/assets.gen.dart';
 
 class SSave extends StatefulWidget {

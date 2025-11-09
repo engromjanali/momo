@@ -8,14 +8,11 @@ import 'package:momo/core/widgets/load_and_error/widgets/loading_widget.dart';
 
 void showLoader() {
   showDialog(
+    barrierDismissible: false,
     context: NavigationService.currentContext,
     builder: (_) {
       return const AlertDialog.adaptive(
-        content: Wrap(
-          children: [
-            WOnScreenLoading(),
-          ],
-        ),
+        content: Wrap(children: [WOnScreenLoading()]),
       );
     },
   );

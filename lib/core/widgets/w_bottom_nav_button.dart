@@ -6,18 +6,26 @@ import 'package:momo/core/extensions/ex_build_context.dart';
 class WBottomNavButton extends StatelessWidget {
   final String label;
   final Function() ontap;
+  final Function()? onTapIgnore;
   final bool isEnabled;
   const WBottomNavButton({
     super.key,
     required this.label,
     required this.ontap,
+    this.onTapIgnore,
     this.isEnabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ontap,
+      onTap: () {
+        if (isEnabled) {
+          ontap.call();
+        } else {
+          onTapIgnore?.call();
+        }
+      },
       child: Container(
         height: 60.h,
         decoration: BoxDecoration(

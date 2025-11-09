@@ -9,7 +9,7 @@ import 'package:momo/core/functions/f_is_null.dart';
 import 'package:momo/core/functions/f_snackbar.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
-import 'package:momo/core/widgets/w_cancle_button.dart';
+import 'package:momo/core/widgets/w_pop_button.dart';
 import 'package:momo/gen/assets.gen.dart';
 
 class WPurchese extends StatefulWidget {
@@ -29,8 +29,10 @@ class _PurcheseScreenState extends State<WPurchese> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        actions: [Text("Restore Purchase", style: TextStyle(fontSize: 14))],
-        leading: WCancleButton(
+        actions: [
+          Text("Restore Purchase", style: context.textTheme?.bodyMedium),
+        ],
+        leading: WPButton(
           onTap: () {
             Navigation.pop();
           },

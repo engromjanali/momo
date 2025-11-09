@@ -5,7 +5,7 @@ import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/functions/f_is_null.dart';
-import 'package:momo/features/explore/view/upload/widget/w_good_and_bad_image.dart';
+import 'package:momo/features/explore/widget/w_good_and_bad_image.dart';
 
 /// if you we purse [isGood] it's show good/bad image listview.
 /// other wise show selected image.

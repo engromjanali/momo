@@ -11,6 +11,7 @@ import 'package:momo/features/explore/data/model/m_explore.dart';
 import 'package:momo/features/explore/view/s_get_this_pack.dart';
 import 'package:momo/features/explore/widget/w_item.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
+import 'package:momo/features/oneshot/function/f_upload_navigation.dart';
 import 'package:momo/features/oneshot/view/s_photo_with_prompt.dart';
 
 class SSeeAll extends StatefulWidget {
@@ -62,19 +63,7 @@ class _SeeAllPageState extends State<SSeeAll> {
                       SGetThisPack(eItem: widget.explore?.items?[index]).push();
                     } else {
                       OItem? oitem = widget.oneShot?.items?[index];
-                      if (isNull(oitem)) {
-                        showSnackBar("Somthing Want Wrong! oitem,null");
-                        return;
-                      }
-                      // with prompt
-                      if (oitem?.prompt?.isNotEmpty ?? false) {
-                        ///Get.to(() => PhotosWithPrompt(osItem: osItem,));
-                        
-                      }
-                      // without prompt
-                      else {
-                        ///Get.to(() => PhotosWithOutPrompt(osItem: osItem,));
-                      }
+                      navigateToOSUploadScreen(oitem);
                     }
                   },
                   size: Size(0.5.sw, 0.5.sw * 1.3),

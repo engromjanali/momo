@@ -5,7 +5,8 @@ import 'package:momo/core/widgets/nav/models/bottom_items.dart';
 import 'package:momo/core/widgets/nav/widgets/nav_bar_widget.dart';
 
 class SHome extends StatefulWidget {
-  const SHome({super.key});
+  final int selectedPage;
+  const SHome({super.key, this.selectedPage = 0});
 
   @override
   State<SHome> createState() => _SHomeState();
@@ -13,6 +14,13 @@ class SHome extends StatefulWidget {
 
 class _SHomeState extends State<SHome> {
   final ValueNotifier currentIndex = ValueNotifier<int>(0);
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    currentIndex.value = widget.selectedPage;
+  }
 
   @override
   void dispose() {

@@ -52,7 +52,7 @@ class _SOneshotState extends State<SOneshot> {
             );
           },
         ),
-        SliverToBoxAdapter(child: gapY(100.h)),
+        SliverToBoxAdapter(child: gapY(80.h)),
       ],
     );
   }

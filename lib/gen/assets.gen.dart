@@ -43,6 +43,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/after_before.svg
   String get afterBefore => 'assets/icons/after_before.svg';
 
+  /// File path: assets/icons/close-2.png
+  AssetGenImage get close2 => const AssetGenImage('assets/icons/close-2.png');
+
+  /// File path: assets/icons/close.png
+  AssetGenImage get close => const AssetGenImage('assets/icons/close.png');
+
   /// File path: assets/icons/dashicons.svg
   String get dashicons => 'assets/icons/dashicons.svg';
 
@@ -53,9 +59,11 @@ class $AssetsIconsGen {
   String get profile => 'assets/icons/profile.svg';
 
   /// List of all assets
-  List<String> get values => [
+  List<dynamic> get values => [
     explore,
     afterBefore,
+    close2,
+    close,
     dashicons,
     oneshot,
     profile,

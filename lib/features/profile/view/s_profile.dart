@@ -5,11 +5,17 @@ import 'package:image_picker/image_picker.dart';
 import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
+import 'package:momo/core/functions/f_is_null.dart';
+import 'package:momo/core/functions/f_pick_single_image.dart';
+import 'package:momo/core/functions/f_printer.dart';
 import 'package:momo/core/functions/f_snackbar.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_card.dart';
-import 'package:momo/features/oneshot/widgets/w_dialog.dart';
+import 'package:momo/core/widgets/w_select_ai_profile_type.dart';
+import 'package:momo/features/explore/data/model/m_selected_image.dart';
+import 'package:momo/core/widgets/w_image_source_dialog.dart';
 import 'package:momo/features/profile/view/s_setting.dart';
+import 'package:momo/features/s_home.dart';
 
 class SProfile extends StatefulWidget {
   const SProfile({super.key});
@@ -55,18 +61,20 @@ class _SProfileState extends State<SProfile> {
           // make it a section
           Expanded(
             child: selectedProfile == 0
-                ? WAIProfile(
+                ? _WAIProfile(
                     onTap: () async {
-                      ImageSource? imageType = await WISDialog().push();
-                      showSnackBar("Image Selected Type");
-                      // GetStarted(imageType: imageType);
+                      ImageType? imageType = await showProfileTypeDialog(
+                        context,
+                      );
+                      if (!isNull(imageType)) {
+                        //  await pickSingleImage();
+                      }
+                      printer(imageType);
                     },
                   )
                 : _WOneShot(
                     onTap: () {
-                      //       CHome cHome = navigatorKey.currentContext!.read<CHome>();
-                      //       // mean one shot screen
-                      //       cHome.setCurrentPage(1);
+                      SHome(selectedPage: 1).pushReplacement();
                     },
                   ),
           ),
@@ -149,9 +157,9 @@ class _WProfile extends StatelessWidget {
   }
 }
 
-class WAIProfile extends StatelessWidget {
+class _WAIProfile extends StatelessWidget {
   final Function() onTap;
-  const WAIProfile({super.key, required this.onTap});
+  const _WAIProfile({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -230,7 +238,7 @@ class WAIProfile extends StatelessWidget {
           ),
         ),
         Spacer(),
-        gapY(100),
+        gapY(80),
       ],
     );
   }

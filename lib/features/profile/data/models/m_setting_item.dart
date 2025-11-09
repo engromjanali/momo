@@ -5,6 +5,7 @@ import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/functions/f_snackbar.dart';
 import 'package:momo/core/functions/f_url_launcher.dart';
 import 'package:momo/core/services/navigation_service.dart';
+import 'package:momo/features/profile/view/s_faq.dart';
 import 'package:momo/gen/assets.gen.dart';
 
 class MSItem {
@@ -33,7 +34,13 @@ List<MSItem> socialList = [
 
 List<MSItem> menuList = [
   MSItem(icon: Assets.icons.explore, label: "Restore Purchase", onTap: () {}),
-  MSItem(icon: Assets.icons.explore, label: "FAQ", onTap: () {}),
+  MSItem(
+    icon: Assets.icons.explore,
+    label: "FAQ",
+    onTap: () {
+      SFaq().push();
+    },
+  ),
   MSItem(icon: Assets.icons.explore, label: "Feedback", onTap: () {}),
   MSItem(icon: Assets.icons.explore, label: "Rate Us", onTap: () {}),
   MSItem(icon: Assets.icons.explore, label: "Terms of Use", onTap: () {}),

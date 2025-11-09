@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,17 +10,20 @@ import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/functions/f_is_null.dart';
+import 'package:momo/core/functions/f_pick_single_image.dart';
+import 'package:momo/core/services/face_detection_service.dart';
 import 'package:momo/core/services/image_picker_services.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
-import 'package:momo/core/widgets/w_cancle_button.dart';
+import 'package:momo/core/widgets/w_pop_button.dart';
 import 'package:momo/core/widgets/w_card.dart';
 import 'package:momo/core/widgets/w_container.dart';
 import 'package:momo/core/widgets/w_purchese.dart';
-import 'package:momo/features/explore/view/upload/data/model/m_selected_image.dart';
-import 'package:momo/features/explore/view/upload/widget/w_selected_image.dart';
+import 'package:momo/features/explore/data/selected_images.dart';
+import 'package:momo/features/explore/data/model/m_selected_image.dart';
+import 'package:momo/features/explore/widget/w_selected_image.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
-import 'package:momo/features/oneshot/widgets/w_dialog.dart';
+import 'package:momo/core/widgets/w_image_source_dialog.dart';
 import 'package:momo/gen/assets.gen.dart';
 
 class SPhotosWithPrompt extends StatefulWidget {
@@ -30,17 +35,12 @@ class SPhotosWithPrompt extends StatefulWidget {
 }
 
 class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
-  List<MSImage?> pickedImageList = [];
   TextEditingController promptController = TextEditingController();
-
   @override
   void initState() {
-    promptController.text = widget.osItem.prompt!;
-    pickedImageList.addAll(
-      (widget.osItem.imageBehaildText ?? []).map((x) => MSImage()).toList(),
-    );
     // TODO: implement initState
     super.initState();
+    promptController.text = widget.osItem.prompt ?? "";
   }
 
   @override
@@ -53,7 +53,7 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
         ontap: () {
           WPurchese().push();
         },
-        isEnabled: !pickedImageList.contains(null),
+        isEnabled: selectedImageList.any((MSImage e) => e.isGoodImage ?? false),
       ).pAll(),
       body: Column(
         children: [
@@ -97,15 +97,11 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
                   ),
                 ),
                 // close icon
-                Positioned(
-                  top: 10,
-                  left: 20,
-                  child: SafeArea(
-                    child: WCancleButton(
-                      onTap: () {
-                        Navigation.pop();
-                      },
-                    ),
+                SafeArea(
+                  child: WPButton(
+                    onTap: () {
+                      Navigation.pop();
+                    },
                   ),
                 ),
               ],
@@ -135,7 +131,9 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
                   ),
                   Expanded(
                     child: Row(
+                      mainAxisSize: MainAxisSize.min,
                       spacing: PTheme.spaceX,
+
                       children: (widget.osItem.imageBehaildText ?? []).map((
                         behindText,
                       ) {
@@ -143,26 +141,21 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
                             .indexOf(behindText);
                         return Expanded(
                           child: WSelectedImage(
-                            msImage: pickedImageList[index],
+                            msImage: index >= selectedImageList.length
+                                ? null
+                                : selectedImageList[index],
                             onTap: () async {
-                              if (!isNull(pickedImageList[index])) {
+                              if (index < selectedImageList.length) {
                                 setState(() {
-                                  pickedImageList[index] = null;
+                                  selectedImageList.removeAt(index);
                                 });
                               } else {
-                                ImageSource? res = await WISDialog().push();
-                                if (!isNull(res)) {
-                                  XFile? pickedImageFile = await SvImagePicker()
-                                      .pickSingleImage(
-                                        choseFrom: res ?? ImageSource.gallery,
-                                      );
-                                  if (!isNull(pickedImageFile)) {
-                                    setState(() {
-                                      pickedImageList[index] = MSImage(
-                                        image: pickedImageFile?.path,
-                                      );
-                                    });
-                                  }
+                                MSImage? msImage = await pickSingleImage();
+
+                                if (!isNull(msImage)) {
+                                  setState(() {
+                                    selectedImageList.add(msImage ?? MSImage());
+                                  });
                                 }
                               }
                             },

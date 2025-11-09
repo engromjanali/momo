@@ -6,7 +6,7 @@ import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_app_bar.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
-import 'package:momo/features/explore/view/upload/view/s_act_name_selection.dart';
+import 'package:momo/features/explore/view/s_act_name_selection.dart';
 
 class SGenderSelection extends StatefulWidget {
   const SGenderSelection({super.key});

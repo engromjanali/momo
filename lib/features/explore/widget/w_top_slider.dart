@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:momo/core/constants/colors.dart';
 import 'package:momo/core/constants/default_values.dart';
+import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
+import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/functions/f_is_null.dart';
 import 'package:momo/core/functions/f_printer.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/image/m_image_payload.dart';
 import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/features/explore/data/model/m_explore.dart';
-import 'package:momo/features/explore/widget/w_glass.dart';
+import 'package:momo/core/widgets/w_glass.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
 
 class TopSlider extends StatefulWidget {
@@ -45,7 +47,7 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
   }
 
   void startTimer() {
-    if (_timer?.isActive??false) return;
+    if (_timer?.isActive ?? false) return;
     printer("timer start");
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(seconds: 3), (_) {
@@ -116,7 +118,7 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
-    final size = Size(430.w, 536.h);
+    final size = Size(430.w, 450.h);
     return SizedBox(
       width: size.width,
       height: size.height,
@@ -164,9 +166,9 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
                       widget.isExplore
                           ? Positioned.fill(
                               child: Column(
+                                spacing: PTheme.spaceY,
                                 children: [
                                   Spacer(),
-
                                   // Slider label
                                   AutoSizeText(
                                     "Create 60 ${widget.exploreList![_currentItem].title} version of you",
@@ -209,10 +211,9 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(height: 40),
+                                  ).pB(value: 20),
                                 ],
-                              ),
+                              ).pAll(),
                             )
                           :
                             // for One Shot (label, button, subtitle)
@@ -255,9 +256,11 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
                                       WGlass(
                                         border: Border.all(
                                           color: Colors.black,
-                                          width: 3,
+                                          width: 1,
                                         ),
-                                        padding: EdgeInsets.all(8),
+                                        padding: EdgeInsets.all(
+                                          PTheme.boarderRadius,
+                                        ),
                                         borderRadius: BorderRadius.circular(20),
                                         child: GestureDetector(
                                           onTap: () {
@@ -285,10 +288,9 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
                                         ),
                                       ),
                                     ],
-                                  ),
-                                  SizedBox(height: 40),
+                                  ).pB(value: 20),
                                 ],
-                              ),
+                              ).pAll(),
                             ),
                     ],
                   ),

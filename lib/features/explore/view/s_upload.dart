@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
@@ -13,12 +12,13 @@ import 'package:momo/core/services/face_detection_service.dart';
 import 'package:momo/core/services/image_picker_services.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
+import 'package:momo/core/widgets/w_pop_button.dart';
 import 'package:momo/features/explore/data/model/m_explore.dart';
-import 'package:momo/features/explore/view/upload/data/data_source/selected_images.dart';
-import 'package:momo/features/explore/view/upload/data/model/m_selected_image.dart';
-import 'package:momo/features/explore/view/upload/view/s_gender_selection.dart';
-import 'package:momo/features/explore/view/upload/widget/w_section_wrapper.dart';
-import 'package:momo/features/explore/view/upload/widget/w_selected_image.dart';
+import 'package:momo/features/explore/data/selected_images.dart';
+import 'package:momo/features/explore/data/model/m_selected_image.dart';
+import 'package:momo/features/explore/view/s_gender_selection.dart';
+import 'package:momo/features/explore/widget/w_section_wrapper.dart';
+import 'package:momo/features/explore/widget/w_selected_image.dart';
 import 'package:momo/gen/assets.gen.dart';
 
 class SUpload extends StatefulWidget {
@@ -88,13 +88,10 @@ class _SUploadState extends State<SUpload> {
             ? "Continue"
             : "Upload ${isNull(selectedImageList) ? "" : "${8 - goodImageCount()} " + "More "}Photo",
         ontap: () {
-          if (goodImageCount() < 8) {
-            // upload more Photos
-            _chooseImage();
-          } else {
-            // Continue
-            SGenderSelection().pushReplacement();
-          }
+          SGenderSelection().pushReplacement();
+        },
+        onTapIgnore: () {
+          _chooseImage();
         },
         isEnabled: goodImageCount() < 8 ? false : true,
       ).pAll(),
@@ -103,11 +100,10 @@ class _SUploadState extends State<SUpload> {
         elevation: 0,
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
+        leading: WPButton(
+          onTap: () {
             Navigation.pop();
           },
-          icon: Icon(Icons.cancel, size: 35),
         ),
         centerTitle: true,
         title: Opacity(
@@ -190,7 +186,7 @@ class _SUploadState extends State<SUpload> {
               ),
             ),
             // gap for bottom nav bar
-            gapY(100),
+            gapY(80),
           ],
         ).pAll(),
       ),
@@ -201,7 +197,6 @@ class _SUploadState extends State<SUpload> {
     if (selectedImageList.length >= 12) {
       showSnackBar(
         "At First Remove Bad Photos!",
-        title: "Worning",
         snackBarType: SnackBarType.warning,
       );
       return;
@@ -220,7 +215,7 @@ class _SUploadState extends State<SUpload> {
 
         /// Run all async checks in serial
         for (int i = 0; i < tmpList.length; i++) {
-          await Future.delayed(Duration(seconds: 1));
+          await Future.delayed(Duration(milliseconds: 10));
           bool isGood = await svFaceDetector.isGoodImage(
             tmpList[i].image ?? "",
           );

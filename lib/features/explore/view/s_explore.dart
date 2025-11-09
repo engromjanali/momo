@@ -53,7 +53,7 @@ class _SExploreState extends State<SExplore> {
             );
           },
         ),
-        SliverToBoxAdapter(child: gapY(100.h)),
+        SliverToBoxAdapter(child: gapY(80.h)),
       ],
     );
   }

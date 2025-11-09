@@ -7,9 +7,10 @@ import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
-import 'package:momo/core/widgets/w_cancle_button.dart';
+import 'package:momo/core/widgets/w_pop_button.dart';
 import 'package:momo/features/explore/data/model/m_explore.dart';
-import 'package:momo/features/explore/view/upload/view/s_upload.dart';
+import 'package:momo/features/explore/view/s_get_started.dart';
+import 'package:momo/features/explore/view/s_upload.dart';
 import 'package:momo/gen/assets.gen.dart';
 
 class SGetThisPack extends StatefulWidget {
@@ -110,7 +111,8 @@ class _GetThisPackState extends State<SGetThisPack> {
             bottomNavigationBar: WBottomNavButton(
               label: "Get This Pack",
               ontap: () async {
-                SUpload(eItem: widget.eItem).pushReplacement();
+                // SUpload(eItem: widget.eItem).pushReplacement();
+                SGetStarted(eItem:widget.eItem,).pushReplacement();
               },
             ).pAll(),
 
@@ -121,10 +123,12 @@ class _GetThisPackState extends State<SGetThisPack> {
                 _opacity == 1 ? 255.h.ceil() : 0,
               ),
               foregroundColor: Colors.white,
-              leading: WCancleButton(
-                onTap: () {
-                  Navigation.pop();
-                },
+              leading: Center(
+                child: WPButton(
+                  onTap: () {
+                    Navigation.pop();
+                  },
+                ),
               ),
               centerTitle: true,
               title: Opacity(opacity: _opacity, child: Text("Suit")),

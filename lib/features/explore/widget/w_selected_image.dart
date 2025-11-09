@@ -5,8 +5,10 @@ import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/functions/f_is_null.dart';
 import 'package:momo/core/functions/f_printer.dart';
 import 'package:momo/core/widgets/w_card.dart';
-import 'package:momo/features/explore/view/upload/data/model/m_selected_image.dart';
+import 'package:momo/core/widgets/w_pop_button.dart';
+import 'package:momo/features/explore/data/model/m_selected_image.dart';
 
+// k
 class WSelectedImage extends StatelessWidget {
   final Function() onTap;
   final MSImage? msImage;
@@ -51,28 +53,14 @@ class WSelectedImage extends StatelessWidget {
                   ),
                 ),
 
-                Positioned.fill(
-                  child: Container(
-                    color: msImage?.isGoodImage ?? false
-                        ? null
-                        : Colors.red.withAlpha(70),
+                if (!(msImage?.isGoodImage ?? false))
+                  Positioned.fill(
+                    child: Container(color: Colors.red.withAlpha(70)),
                   ),
-                ),
                 Positioned(
-                  top: 3,
-                  right: 3,
-                  child: IconButton(
-                    onPressed: () {
-                      onTap();
-                    },
-                    icon: Icon(
-                      Icons.cancel,
-                      color: msImage?.isGoodImage ?? false
-                          ? Colors.white
-                          : Colors.red,
-                      size: 25,
-                    ),
-                  ),
+                  top: 0,
+                  right: 0,
+                  child: WPButton.remove(onTap: onTap),
                 ),
               ],
             )
