@@ -40,6 +40,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/Explore.svg
   String get explore => 'assets/icons/Explore.svg';
 
+  /// File path: assets/icons/Tiktok.png
+  AssetGenImage get tiktok => const AssetGenImage('assets/icons/Tiktok.png');
+
   /// File path: assets/icons/after_before.svg
   String get afterBefore => 'assets/icons/after_before.svg';
 
@@ -52,21 +55,50 @@ class $AssetsIconsGen {
   /// File path: assets/icons/dashicons.svg
   String get dashicons => 'assets/icons/dashicons.svg';
 
+  /// File path: assets/icons/faq.svg
+  String get faq => 'assets/icons/faq.svg';
+
+  /// File path: assets/icons/feedback.svg
+  String get feedback => 'assets/icons/feedback.svg';
+
+  /// File path: assets/icons/insta.png
+  AssetGenImage get insta => const AssetGenImage('assets/icons/insta.png');
+
   /// File path: assets/icons/oneshot.svg
   String get oneshot => 'assets/icons/oneshot.svg';
+
+  /// File path: assets/icons/privacy_and_policy.svg
+  String get privacyAndPolicy => 'assets/icons/privacy_and_policy.svg';
 
   /// File path: assets/icons/profile.svg
   String get profile => 'assets/icons/profile.svg';
 
+  /// File path: assets/icons/rating.svg
+  String get rating => 'assets/icons/rating.svg';
+
+  /// File path: assets/icons/restore_purchase.svg
+  String get restorePurchase => 'assets/icons/restore_purchase.svg';
+
+  /// File path: assets/icons/trams_of_use.svg
+  String get tramsOfUse => 'assets/icons/trams_of_use.svg';
+
   /// List of all assets
   List<dynamic> get values => [
     explore,
+    tiktok,
     afterBefore,
     close2,
     close,
     dashicons,
+    faq,
+    feedback,
+    insta,
     oneshot,
+    privacyAndPolicy,
     profile,
+    rating,
+    restorePurchase,
+    tramsOfUse,
   ];
 }
 

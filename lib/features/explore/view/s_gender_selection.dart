@@ -42,7 +42,6 @@ class _GenderSelectionState extends State<SGenderSelection> {
           ValueListenableBuilder(
             valueListenable: selectedGender,
             builder: (context, value, _) {
-              print(value);
               return Column(
                 spacing: 10,
                 children: [

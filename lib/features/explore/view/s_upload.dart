@@ -17,7 +17,7 @@ import 'package:momo/features/explore/data/model/m_explore.dart';
 import 'package:momo/features/explore/data/selected_images.dart';
 import 'package:momo/features/explore/data/model/m_selected_image.dart';
 import 'package:momo/features/explore/view/s_gender_selection.dart';
-import 'package:momo/features/explore/widget/w_section_wrapper.dart';
+import 'package:momo/features/explore/widget/w_upload_section_wrapper.dart';
 import 'package:momo/features/explore/widget/w_selected_image.dart';
 import 'package:momo/gen/assets.gen.dart';
 
@@ -123,7 +123,7 @@ class _SUploadState extends State<SUpload> {
             ).pB(value: 40),
 
             // good photos
-            WSectionWrapper(
+            WUSectionWrapper(
               isGood: true,
               title: "Good Photos",
               subtitle:
@@ -131,7 +131,7 @@ class _SUploadState extends State<SUpload> {
               imageList: goodPhotosList,
             ),
             // bad photos
-            WSectionWrapper(
+            WUSectionWrapper(
               isGood: false,
               title: "Bad Photos",
               subtitle:
@@ -140,7 +140,7 @@ class _SUploadState extends State<SUpload> {
             ),
 
             // your photos
-            WSectionWrapper(
+            WUSectionWrapper(
               title: !isNull(selectedImageList) ? "Your Photos" : "",
               child: Container(
                 color: context.backgroundColor,

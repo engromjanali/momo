@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:momo/core/constants/default_values.dart';
+import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/features/explore/data/model/m_explore.dart';
 import 'package:momo/features/explore/view/s_get_this_pack.dart';
 import 'package:momo/features/explore/view/s_see_all.dart';
 import 'package:momo/features/explore/widget/w_item.dart';
+import 'package:momo/features/oneshot/controller/c_oneshot.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
-import 'package:momo/features/oneshot/function/f_upload_navigation.dart';
-import 'package:momo/features/oneshot/view/s_photo_with_prompt.dart';
 
 class WSection extends StatelessWidget {
   final MExplore? mExplore;
@@ -29,13 +29,17 @@ class WSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
+            spacing: 30.w,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                isExplore
-                    ? mExplore?.title ?? PDefaultValues.noName
-                    : mOneshot?.title ?? PDefaultValues.noName,
-                style: context.textTheme?.titleLarge,
+              Expanded(
+                child: Text(
+                  isExplore
+                      ? mExplore?.title ?? PDefaultValues.noName
+                      : mOneshot?.title ?? PDefaultValues.noName,
+                  style: context.textTheme?.titleLarge,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               GestureDetector(
                 onTap: () {

@@ -18,7 +18,6 @@ class _SExploreState extends State<SExplore> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {});
   }
@@ -26,13 +25,13 @@ class _SExploreState extends State<SExplore> {
   @override
   void dispose() {
     _pageController.dispose();
-    // TODO: implement dispose
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     CExplore cExplore = PowerVault.put(CExplore());
+    print(cExplore.exploreList?[0].toJson());
     return CustomScrollView(
       slivers: [
         // top slider

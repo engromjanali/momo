@@ -60,4 +60,9 @@ class PColors {
       Colors.transparent, // top color
     ],
   );
+  static var proLinearGradient = LinearGradient(
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
+    colors: [Color(0xFF01FD8C), Color(0xFF2FDFFF)],
+  );
 }

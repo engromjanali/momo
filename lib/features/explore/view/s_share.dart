@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
 import 'package:momo/core/functions/f_snackbar.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_pop_button.dart';
 import 'package:momo/core/widgets/w_purchese.dart';
+import 'package:momo/features/explore/widget/w_momo_al_label.dart';
+import 'package:momo/features/explore/widget/w_pro_label.dart';
 import 'package:momo/features/s_home.dart';
 import 'package:momo/gen/assets.gen.dart';
 
@@ -74,7 +74,7 @@ class _SShareState extends State<SShare> {
                       ),
                     ),
 
-                    // MomoLabel(),
+                    WAiLabel(),
                   ],
                 ),
               ),

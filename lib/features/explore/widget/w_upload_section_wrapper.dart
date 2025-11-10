@@ -9,13 +9,13 @@ import 'package:momo/features/explore/widget/w_good_and_bad_image.dart';
 
 /// if you we purse [isGood] it's show good/bad image listview.
 /// other wise show selected image.
-class WSectionWrapper extends StatelessWidget {
+class WUSectionWrapper extends StatelessWidget {
   final bool? isGood;
   final String title;
   final String? subtitle;
   final List<String>? imageList;
   final Widget? child;
-  const WSectionWrapper({
+  const WUSectionWrapper({
     super.key,
     this.isGood,
     required this.title,

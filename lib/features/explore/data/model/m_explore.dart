@@ -22,31 +22,32 @@ class MExplore {
 class EItem {
     final String? title;
     final String? details;
-    final List<String>? spacificaton;
+    final List<dynamic>? specifications;
     final List<String>? images;
-    final List<String>? inputImages;
+    final List<dynamic>? inputImages;
 
     EItem({
         this.title,
         this.details,
-        this.spacificaton,
+        this.specifications,
         this.images,
-        this.inputImages
+        this.inputImages,
     });
 
     factory EItem.fromJson(Map<String, dynamic> json) => EItem(
         title: json["title"],
         details: json["details"],
-        spacificaton: json["spacificaton"] == null ? [] : List<String>.from(json["spacificaton"]!.map((x) => x)),
+        specifications: json["specifications"] == null ? [] : List<dynamic>.from(json["specifications"]!.map((x) => x)),
         images: json["images"] == null ? [] : List<String>.from(json["images"]!.map((x) => x)),
-        inputImages: json["inputImages"] == null ? [] : List<String>.from(json["inputImages"]!.map((x) => x)),
+        inputImages: json["inputImages"] == null ? [] : List<dynamic>.from(json["inputImages"]!.map((x) => x)),
     );
 
     Map<String, dynamic> toJson() => {
         "title": title,
         "details": details,
-        "spacificaton": spacificaton == null ? [] : List<dynamic>.from(spacificaton!.map((x) => x)),
+        "specifications": specifications == null ? [] : List<dynamic>.from(specifications!.map((x) => x)),
         "images": images == null ? [] : List<dynamic>.from(images!.map((x) => x)),
         "inputImages": inputImages == null ? [] : List<dynamic>.from(inputImages!.map((x) => x)),
     };
 }
+

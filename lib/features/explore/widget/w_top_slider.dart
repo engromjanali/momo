@@ -14,6 +14,7 @@ import 'package:momo/core/widgets/image/m_image_payload.dart';
 import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/features/explore/data/model/m_explore.dart';
 import 'package:momo/core/widgets/w_glass.dart';
+import 'package:momo/features/explore/widget/w_pro_label.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
 
 class TopSlider extends StatefulWidget {
@@ -162,6 +163,7 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
                         width: size.width,
                         decoration: BoxDecoration(gradient: PColors.imageFG),
                       ),
+                      WProLabel(),
 
                       widget.isExplore
                           ? Positioned.fill(

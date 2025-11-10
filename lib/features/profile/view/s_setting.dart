@@ -9,6 +9,7 @@ import 'package:momo/core/functions/f_is_null.dart';
 import 'package:momo/core/functions/f_snackbar.dart';
 import 'package:momo/core/widgets/w_card.dart';
 import 'package:momo/features/profile/data/models/m_setting_item.dart';
+import 'package:momo/gen/assets.gen.dart';
 
 class SSetting extends StatefulWidget {
   const SSetting({super.key});
@@ -32,11 +33,13 @@ class _SSettingState extends State<SSetting> {
         child: Column(
           children: [
             SizedBox.shrink().pDivider(),
+            gapY(50),
 
             Column(
               children: [
                 WCard(
                   child: ListView.builder(
+                    padding: EdgeInsets.all(0),
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: socialList.length,
@@ -53,6 +56,7 @@ class _SSettingState extends State<SSetting> {
                 ).pB(value: 20),
                 WCard(
                   child: ListView.builder(
+                    padding: EdgeInsets.all(0),
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: menuList.length,
@@ -61,7 +65,7 @@ class _SSettingState extends State<SSetting> {
                         label: menuList[index].label,
                         iconData: menuList[index].icon,
                         onTap: menuList[index].onTap,
-                        isLastitem: menuList.length - 1 == index,
+                        // isLastitem: menuList.length - 1 == index,
                         child: menuList[index].child,
                       );
                     },
@@ -95,20 +99,25 @@ class _WSItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isPng = iconData.endsWith(".png");
     return Column(
       children: [
         GestureDetector(
           onTap: onTap,
           child: Row(
             children: [
-              SvgPicture.asset(
-                iconData,
-                colorFilter: ColorFilter.mode(
-                  context.primaryTextColor ?? Colors.grey,
-                  BlendMode.srcIn,
-                ),
-                height: 20.w,
-              ),
+              isPng
+                  ? Image.asset(iconData, height: 20.w, width: 20.w)
+                  : SvgPicture.asset(
+                      iconData,
+                      colorFilter: ColorFilter.mode(
+                        context.primaryTextColor ?? Colors.grey,
+                        BlendMode.srcIn,
+                      ),
+                      errorBuilder: (context, error, stackTrace) =>
+                          Image.asset(Assets.images.x.path),
+                      height: 20.w,
+                    ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),

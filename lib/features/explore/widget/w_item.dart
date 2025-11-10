@@ -70,6 +70,8 @@ class WItem extends StatelessWidget {
                           : oItem?.title ?? PDefaultValues.noName,
                       textAlign: TextAlign.center,
                       style: context.textTheme?.titleMedium,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                     ),
                     if (isExplore)
                       Text(

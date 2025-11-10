@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:momo/core/constants/default_values.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
-import 'package:momo/core/functions/f_is_null.dart';
-import 'package:momo/core/functions/f_printer.dart';
-import 'package:momo/core/functions/f_snackbar.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/w_app_bar.dart';
 import 'package:momo/features/explore/data/model/m_explore.dart';
 import 'package:momo/features/explore/view/s_get_this_pack.dart';
 import 'package:momo/features/explore/widget/w_item.dart';
+import 'package:momo/features/oneshot/controller/c_oneshot.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
-import 'package:momo/features/oneshot/function/f_upload_navigation.dart';
-import 'package:momo/features/oneshot/view/s_photo_with_prompt.dart';
 
 class SSeeAll extends StatefulWidget {
   final MExplore? explore;

@@ -23,30 +23,38 @@ class MSItem {
 
 List<MSItem> socialList = [
   MSItem(
-    icon: Assets.icons.explore,
+    icon: Assets.icons.insta.path,
     label: "Instagram",
     onTap: () {
       OpenURLs.open(type: OpenType.url, value: PDefaultValues.instagramLink);
     },
   ),
-  MSItem(icon: Assets.icons.explore, label: "Tik-Tok", onTap: () {}),
+  MSItem(icon: Assets.icons.tiktok.path, label: "Tik-Tok", onTap: () {}),
 ];
 
 List<MSItem> menuList = [
-  MSItem(icon: Assets.icons.explore, label: "Restore Purchase", onTap: () {}),
   MSItem(
-    icon: Assets.icons.explore,
+    icon: Assets.icons.restorePurchase,
+    label: "Restore Purchase",
+    onTap: () {},
+  ),
+  MSItem(
+    icon: Assets.icons.faq,
     label: "FAQ",
     onTap: () {
       SFaq().push();
     },
   ),
-  MSItem(icon: Assets.icons.explore, label: "Feedback", onTap: () {}),
-  MSItem(icon: Assets.icons.explore, label: "Rate Us", onTap: () {}),
-  MSItem(icon: Assets.icons.explore, label: "Terms of Use", onTap: () {}),
-  MSItem(icon: Assets.icons.explore, label: "Privacy Policy", onTap: () {}),
+  MSItem(icon: Assets.icons.feedback, label: "Feedback", onTap: () {}),
+  MSItem(icon: Assets.icons.rating, label: "Rate Us", onTap: () {}),
+  MSItem(icon: Assets.icons.tramsOfUse, label: "Terms of Use", onTap: () {}),
   MSItem(
-    icon: Assets.icons.explore,
+    icon: Assets.icons.privacyAndPolicy,
+    label: "Privacy Policy",
+    onTap: () {},
+  ),
+  MSItem(
+    icon: Assets.icons.profile,
     label: "User ID",
     onTap: () {
       Clipboard.setData(ClipboardData(text: "483nvidfn10238593"));
@@ -61,7 +69,10 @@ List<MSItem> menuList = [
             overflow: TextOverflow.ellipsis,
           ),
         ),
-        Icon(Icons.file_copy),
+        Icon(
+          Icons.file_copy,
+          color: NavigationService.currentContext.primaryTextColor,
+        ),
       ],
     ),
   ),
