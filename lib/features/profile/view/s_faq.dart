@@ -24,7 +24,7 @@ class _SFaqState extends State<SFaq> {
           return StatefulBuilder(
             builder: (context, setLocalState) {
               return AnimatedSize(
-                duration: Duration(milliseconds: 300),
+                duration: Duration(milliseconds: 500),
                 curve: Curves.easeInOut,
                 child: WContainer(
                   child: Column(

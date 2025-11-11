@@ -16,12 +16,13 @@ import 'package:momo/features/explore/data/model/m_explore.dart';
 import 'package:momo/core/widgets/w_glass.dart';
 import 'package:momo/features/explore/widget/w_pro_label.dart';
 import 'package:momo/features/oneshot/data/model/m_oneshot.dart';
+import 'package:momo/features/profile/data/models/m_setting_item.dart';
 
 class TopSlider extends StatefulWidget {
   final List<MExplore>? exploreList;
   final List<MOneshot>? oneshotList;
   final bool isExplore;
-  final ValueChanged<dynamic> onTap;
+  final Function(dynamic) onTap;
 
   const TopSlider({
     super.key,
@@ -89,7 +90,7 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
 
       // নতুন route তে subscribe
       _currentRoute = route;
-      // NavigationService.routeObserver.subscribe(this, _currentRoute!);
+      NavigationService.routeObserver.subscribe(this, _currentRoute!);
     }
   }
 
@@ -138,6 +139,21 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
               });
             },
             itemBuilder: (context, index) {
+              String? url = widget.isExplore
+                  ? (isNotNull(widget.exploreList?[index].items) &&
+                            isNotNull(
+                              widget.exploreList?[index].items?.first.images,
+                            )
+                        ? (widget
+                              .exploreList?[index]
+                              .items
+                              ?.first
+                              .images
+                              ?.first)
+                        : "No explore Image")
+                  : (isNotNull(widget.oneshotList?[index].items)
+                        ? (widget.oneshotList?[index].items?.first.image)
+                        : "No oneshot Image");
               return Column(
                 children: [
                   Stack(
@@ -148,7 +164,7 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
                         width: size.width,
                         decoration: BoxDecoration(),
                         child: WImage(
-                          "imageUrl",
+                          url,
                           payload: MImagePayload(
                             height: 100,
                             width: 100,
@@ -190,7 +206,12 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
                                     child: GestureDetector(
                                       onTap: () {
                                         widget.onTap(
-                                          widget.exploreList![_currentItem],
+                                          isNotNull(url)
+                                              ? (widget
+                                                    .exploreList?[_currentItem]
+                                                    .items
+                                                    ?.first)
+                                              : null,
                                         );
                                       },
                                       child: Padding(
@@ -267,7 +288,12 @@ class _TopSliderState extends State<TopSlider> with RouteAware {
                                         child: GestureDetector(
                                           onTap: () {
                                             widget.onTap(
-                                              widget.oneshotList![_currentItem],
+                                              isNotNull(url)
+                                                  ? (widget
+                                                        .oneshotList?[_currentItem]
+                                                        .items
+                                                        ?.first)
+                                                  : null,
                                             );
                                           },
 

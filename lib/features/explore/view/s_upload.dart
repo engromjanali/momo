@@ -203,6 +203,7 @@ class _SUploadState extends State<SUpload> {
     }
     try {
       showLoader();
+      // await Future.delayed(Duration(seconds: 5));
       FaceDetectionService svFaceDetector = FaceDetectionService.instance;
       List<XFile>? pickedImageList = await SvImagePicker().pickMultipleImage(
         limit: (12 - selectedImageList.length).clamp(2, 12),

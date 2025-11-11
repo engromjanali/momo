@@ -39,7 +39,9 @@ class _SOneshotState extends State<SOneshot> {
           child: TopSlider(
             isExplore: false,
             oneshotList: cOneShot.oneShotList,
-            onTap: (itemIndex) {},
+            onTap: (oItem) {
+              navigateToOSUploadScreen(oItem);
+            },
           ),
         ),
         // explore section list

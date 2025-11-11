@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
+import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/features/explore/controller/c_explore.dart';
+import 'package:momo/features/explore/data/model/m_explore.dart';
+import 'package:momo/features/explore/view/s_get_this_pack.dart';
 import 'package:momo/features/explore/widget/w_section.dart';
 import 'package:momo/features/explore/widget/w_top_slider.dart';
 import 'package:power_state/power_state.dart';
@@ -39,7 +42,9 @@ class _SExploreState extends State<SExplore> {
           child: TopSlider(
             isExplore: true,
             exploreList: cExplore.exploreList,
-            onTap: (itemIndex) {},
+            onTap: (eItem) {
+              SGetThisPack(eItem: eItem).push();
+            },
           ),
         ),
         // explore section list

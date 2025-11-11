@@ -43,7 +43,11 @@ class WItem extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: WImage(
-                    isExplore ? eItem?.images?.first : oItem?.image,
+                    isExplore
+                        ? isNotNull(eItem?.images)
+                              ? eItem?.images?.first
+                              : null
+                        : oItem?.image,
                     payload: MImagePayload(fit: BoxFit.fill),
                   ),
                 ),

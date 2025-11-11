@@ -5,6 +5,7 @@ import 'package:momo/core/constants/default_values.dart';
 import 'package:momo/core/constants/dimension_theme.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
+import 'package:momo/core/functions/f_is_null.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
@@ -102,7 +103,11 @@ class _SGetThisPackState extends State<SGetThisPack> {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  WImage(widget.eItem?.images?.first),
+                  WImage(
+                    !isNull(widget.eItem?.images)
+                        ? widget.eItem?.images?.first
+                        : "No Image",
+                  ),
                   Container(
                     decoration: BoxDecoration(gradient: PColors.imageFG),
                   ),
@@ -275,16 +280,15 @@ class _SpecificationItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
+        spacing: PTheme.paddingX,
         crossAxisAlignment: CrossAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 6, right: 10),
-            child: Icon(
-              Icons.circle,
-              color: context.secondaryTextColor,
-              size: context.textTheme?.bodySmall?.fontSize,
-            ),
-          ),
+          Icon(
+            Icons.circle,
+            color: context.secondaryTextColor,
+            size: context.textTheme?.bodySmall?.fontSize,
+          ).pV(value: 2.5),
           Expanded(child: Text(text, style: context.textTheme?.bodySmall)),
         ],
       ),

@@ -73,7 +73,6 @@ class _SShareState extends State<SShare> {
                         fit: BoxFit.cover,
                       ),
                     ),
-
                     WAiLabel(),
                   ],
                 ),
@@ -95,12 +94,11 @@ class _SShareState extends State<SShare> {
                           itemBuilder: (_, index) {
                             return SizedBox(
                               width: 110.w,
-                              child: _getFilterWidget(
+                              child: _FilterWidget(
                                 ontap: () {
                                   setState(() {
                                     selectedIndex = index;
                                   });
-                                  WPurchese().push();
                                 },
                                 imagePath: filterList[index],
                                 isGood: false,
@@ -136,9 +134,10 @@ class _SShareState extends State<SShare> {
                             size: 30,
                             onTap: () {
                               showSnackBar(
-                                title: "Info",
-                                "We Are Working about...\nstay with us!",
+                                snackBarType: SnackBarType.warning,
+                                "Temporary Unavailable",
                               );
+                              WPurchese().push();
                             },
                           ).pAll(value: 5),
                         ),
@@ -153,13 +152,44 @@ class _SShareState extends State<SShare> {
       ),
     );
   }
+}
 
-  Widget _getFilterWidget({
-    required String imagePath,
-    bool isGood = true,
-    required Function() ontap,
-    bool isSelected = false,
-  }) {
+class WShareIcon extends StatelessWidget {
+  final String path;
+  final double size;
+  final Function() onTap;
+  const WShareIcon({
+    super.key,
+    required this.path,
+    required this.size,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Image.asset(path, height: size),
+    );
+  }
+}
+
+class _FilterWidget extends StatelessWidget {
+  final String imagePath;
+  final bool isGood;
+  final Function() ontap;
+  final bool isSelected;
+
+  const _FilterWidget({
+    super.key,
+    required this.imagePath,
+    required this.ontap,
+    this.isSelected = false,
+    this.isGood = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: ontap,
       child: Container(
@@ -196,7 +226,7 @@ class _SShareState extends State<SShare> {
                       left: 0,
                       child: Center(
                         child: Text(
-                          "Romjan Ali",
+                          "Filter Name",
                           style: context.textTheme?.bodyMedium,
                         ),
                       ),
@@ -205,26 +235,6 @@ class _SShareState extends State<SShare> {
               ),
             ),
       ),
-    );
-  }
-}
-
-class WShareIcon extends StatelessWidget {
-  final String path;
-  final double size;
-  final Function() onTap;
-  const WShareIcon({
-    super.key,
-    required this.path,
-    required this.size,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Image.asset(path, height: size),
     );
   }
 }

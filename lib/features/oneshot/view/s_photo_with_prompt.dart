@@ -14,6 +14,7 @@ import 'package:momo/core/functions/f_pick_single_image.dart';
 import 'package:momo/core/services/face_detection_service.dart';
 import 'package:momo/core/services/image_picker_services.dart';
 import 'package:momo/core/services/navigation_service.dart';
+import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
 import 'package:momo/core/widgets/w_pop_button.dart';
 import 'package:momo/core/widgets/w_card.dart';
@@ -36,6 +37,7 @@ class SPhotosWithPrompt extends StatefulWidget {
 
 class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
   TextEditingController promptController = TextEditingController();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -63,9 +65,7 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
             child: Stack(
               children: [
                 // image
-                SizedBox.expand(
-                  child: Image.asset(Assets.images.x.path, fit: BoxFit.fill),
-                ),
+                SizedBox.expand(child: WImage(widget.osItem.image)),
                 // top color shadow
                 Positioned(
                   child: Container(

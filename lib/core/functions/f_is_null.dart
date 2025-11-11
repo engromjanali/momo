@@ -33,3 +33,7 @@ bool isNull(dynamic value) {
 
   return false;
 }
+
+bool isNotNull(dynamic value) {
+  return !isNull(value);
+}
