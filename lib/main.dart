@@ -8,7 +8,6 @@ import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/functions/f_default_scrolling.dart';
 import 'package:momo/core/services/navigation_service.dart';
 import 'package:momo/core/services/shared_preference_service.dart';
-import 'package:momo/example.dart';
 import 'package:momo/firebase_options.dart';
 import 'package:momo/spalsh.dart';
 import 'package:power_state/power_state.dart';
@@ -94,7 +93,7 @@ class __SCheckPointState extends State<_SCheckPoint> {
               },
 
               home: SpalshScreen(),
-
+              // home: DismissibleExample(),
             );
           },
         );

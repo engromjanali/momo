@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/extensions/ex_padding.dart';
+import 'package:momo/core/functions/f_is_null.dart';
 import 'package:momo/core/services/navigation_service.dart';
+import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
 import 'package:momo/core/widgets/w_pop_button.dart';
 import 'package:momo/core/widgets/w_select_ai_profile_type.dart';
@@ -68,9 +70,11 @@ class _SGetStartedState extends State<SGetStarted> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: SizedBox.expand(
-                        child: Image.asset(
-                          Assets.images.x.path,
-                          fit: BoxFit.cover,
+                        child: WImage(
+                          isNotNull(widget.eItem?.images)
+                              ? widget.eItem?.images?.first
+                              : null,
+                          // fit: BoxFit.cover,
                         ),
                       ),
                     ),

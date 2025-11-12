@@ -14,6 +14,7 @@ import 'package:momo/core/functions/f_pick_single_image.dart';
 import 'package:momo/core/services/face_detection_service.dart';
 import 'package:momo/core/services/image_picker_services.dart';
 import 'package:momo/core/services/navigation_service.dart';
+import 'package:momo/core/widgets/image/m_image_payload.dart';
 import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/core/widgets/w_bottom_nav_button.dart';
 import 'package:momo/core/widgets/w_pop_button.dart';
@@ -46,6 +47,13 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    selectedImageList.clear();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
@@ -65,7 +73,12 @@ class _PhotosWithPromptState extends State<SPhotosWithPrompt> {
             child: Stack(
               children: [
                 // image
-                SizedBox.expand(child: WImage(widget.osItem.image)),
+                SizedBox.expand(
+                  child: WImage(
+                    widget.osItem.image,
+                    payload: MImagePayload(fit: BoxFit.fill),
+                  ),
+                ),
                 // top color shadow
                 Positioned(
                   child: Container(

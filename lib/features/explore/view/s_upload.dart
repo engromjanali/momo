@@ -64,6 +64,7 @@ class _SUploadState extends State<SUpload> {
   @override
   void dispose() {
     _scrollController.dispose();
+    selectedImageList.clear();
     super.dispose();
   }
 
@@ -211,12 +212,11 @@ class _SUploadState extends State<SUpload> {
 
       if (pickedImageList != null) {
         List<MSImage> tmpList = pickedImageList
-            .map((image) => MSImage(image: File(image.path).path))
+            .map((image) => MSImage(image: image.path)) //File(image.path)
             .toList();
 
         /// Run all async checks in serial
         for (int i = 0; i < tmpList.length; i++) {
-          await Future.delayed(Duration(milliseconds: 10));
           bool isGood = await svFaceDetector.isGoodImage(
             tmpList[i].image ?? "",
           );

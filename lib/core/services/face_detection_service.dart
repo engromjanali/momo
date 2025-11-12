@@ -70,7 +70,6 @@ class FaceDetectionService {
       final int? id = face.trackingId;
     }
 
-    dispose(); // dispose after use.
     return true;
   }
 }

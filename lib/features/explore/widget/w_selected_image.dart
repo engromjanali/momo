@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:momo/core/extensions/ex_build_context.dart';
 import 'package:momo/core/functions/f_is_null.dart';
 import 'package:momo/core/functions/f_printer.dart';
+import 'package:momo/core/widgets/image/m_image_payload.dart';
+import 'package:momo/core/widgets/image/w_image.dart';
 import 'package:momo/core/widgets/w_card.dart';
 import 'package:momo/core/widgets/w_pop_button.dart';
 import 'package:momo/features/explore/data/model/m_selected_image.dart';
@@ -42,12 +44,9 @@ class WSelectedImage extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: SizedBox.expand(
-                      child: Image.file(
-                        errorBuilder: (context, error, stackTrace) =>
-                            Icon(Icons.person),
-                        File(msImage?.image ?? ""),
-                        fit: BoxFit.cover,
-                        alignment: Alignment.topCenter,
+                      child: WImage(
+                        msImage?.image,
+                        // payload: MImagePayload(fit: BoxFit.fill),
                       ),
                     ),
                   ),

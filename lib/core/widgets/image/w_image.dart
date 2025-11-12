@@ -118,21 +118,13 @@ class _WFallbackImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // temp
-    return Image.asset(
-      Assets.images.x.path,
-      height: payload?.height ?? PTheme.imageDefaultY,
-      width: payload?.width ?? PTheme.imageDefaultX,
-      fit: payload?.fit ?? BoxFit.contain,
-    );
-
     return SvgPicture.asset(
       payload?.isProfileImage == true
           ? Assets.logo.profile
           : Assets.logo.imageNotFound,
       height: payload?.height ?? PTheme.imageDefaultY,
       width: payload?.width ?? PTheme.imageDefaultX,
-      fit: payload?.fit ?? BoxFit.contain,
+      fit: payload?.fit ?? BoxFit.cover,
       colorFilter: ColorFilter.mode(context.primaryTextColor!, BlendMode.srcIn),
     );
   }

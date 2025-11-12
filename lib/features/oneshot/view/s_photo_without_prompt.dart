@@ -35,6 +35,13 @@ class _PhotosWithOutPromptState extends State<SPhotosWithOutPrompt> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    selectedImageList.clear();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
@@ -59,7 +66,7 @@ class _PhotosWithOutPromptState extends State<SPhotosWithOutPrompt> {
                 SizedBox.expand(
                   child: WImage(
                     widget.oItem.image,
-                    payload: MImagePayload(fit: BoxFit.cover),
+                    payload: MImagePayload(fit: BoxFit.fill),
                   ),
                 ),
                 // top color shadow
